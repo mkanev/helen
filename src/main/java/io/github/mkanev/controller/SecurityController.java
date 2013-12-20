@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created with IntelliJ IDEA. User: Maksim Kanev Date: 11.08.13 Time: 11:06
+ * @author Maksim Kanev
  */
 @Controller
 public class SecurityController {
