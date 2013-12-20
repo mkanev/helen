@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                 http://www.springframework.org/schema/beans/spring-beans.xsd
+                                 http://www.springframework.org/schema/security
+                                 http://www.springframework.org/schema/security/spring-security.xsd">
+    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+    <http auto-config="true" use-expressions="true">
+        <session-management>
+            <concurrency-control error-if-maximum-exceeded="false" max-sessions="1"/>
+        </session-management>
+        <form-login login-page="/login" authentication-failure-url="/login-error"/>
+        <logout invalidate-session="true" logout-success-url="/"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/**/new" access="isAuthenticated()"/>
+        <intercept-url pattern="/**/edit" access="isAuthenticated()"/>
+    </http>
+    <authentication-manager>
+        <authentication-provider user-service-ref="securityHelper">
+            <!--<password-encoder hash="plaintext"/>-->
+        </authentication-provider>
+    </authentication-manager>
+    <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"/>
+    <beans:bean id="tokenRepo" class="org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl"/>
+    <beans:bean id="securityHelper" class="io.github.mkanev.helper.SecurityHelperImpl"/>
+</beans:beans>

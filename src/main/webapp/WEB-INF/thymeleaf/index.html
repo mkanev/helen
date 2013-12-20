@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/layout :: [//head]" th:with="currentPage='index'">
+</head>
+<body>
+<div class="mainWrapper">
+    <header th:include="common/layout :: [//header]" th:with="currentPage='index'"></header>
+    <div class="container page-content">
+        Корень
+    </div>
+</div>
+<footer th:substituteby="common/layout :: [//footer]"></footer>
+<div th:substituteby="common/layout :: foot" th:remove="tag"></div>
+</body>
+</html>

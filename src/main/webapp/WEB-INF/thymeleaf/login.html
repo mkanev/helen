@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/layout :: [//head]" th:with="currentPage='login'">
+</head>
+<body>
+<div class="mainWrapper">
+    <div class="container page-content">
+        <div class="row">
+            <div class="span6 offset3">
+                <form id="loginForm" method="POST" class="form-horizontal" th:action="@{/j_spring_security_check}">
+                    <fieldset>
+                        <legend th:text="#{form.login.legend}">Login Form</legend>
+                        <div th:if="${loginError}" class="alert alert-error">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Ошибка!</strong> Wrong user or password
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" th:text="#{form.login.username}">Username</label>
+
+                            <div class="controls">
+                                <input type="text" id="j_username" name="j_username" autofocus="autofocus"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" th:text="#{form.login.password}">Password</label>
+
+                            <div class="controls">
+                                <input type="password" id="j_password" name="j_password"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <a href="./index.html" class="control-label" th:href="@{/index}">Назад</a>
+
+                            <div class="controls">
+                                <input type="submit" value="Log in" class="btn btn-info" th:value="#{form.login.submit}"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:substituteby="common/layout :: [//footer]"></footer>
+<div th:substituteby="common/layout :: foot" th:remove="tag"></div>
+</body>
+</html>

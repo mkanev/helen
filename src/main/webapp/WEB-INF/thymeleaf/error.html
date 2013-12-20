@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common/layout :: [//head]">
+</head>
+<body>
+<div class="mainWrapper">
+    <!--<header th:substituteby="common/layout :: [//header]"></header>-->
+    <div class="container page-content">
+        <div class="row">
+            <div class="hero-unit center">
+                <h1>Ой, что-то сломалось
+                    <small class="text-error" th:text="${errorCode}">Ошибка системы</small>
+                </h1>
+                <br/>
+
+                <p>В процессе работы системы произошла непредвиденная ошибка. Пожалуйста, сообщите системному администратору.</p>
+
+                <p>Нажмите кнопку <b>Назад</b> в браузере, чтобы вернуться на предыдущую страницу.</p>
+
+                <p><b>Чтобы вернуться на главную страницу, воспользуйтесь этой кнопкой:</b></p>
+                <a href="/index" th:href="@{/index}" class="btn btn-info">На главную</a>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <span th:text="#{error.accordion.heading}">Technical information</span>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse in">
+                        <div class="accordion-inner" th:utext="${errorMessage}">
+                            Error java.lang.NullPointerException
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<footer th:substituteby="common/layout :: [//footer]"></footer>-->
+<div th:substituteby="common/layout :: foot" th:remove="tag"></div>
+</body>
+</html>
+

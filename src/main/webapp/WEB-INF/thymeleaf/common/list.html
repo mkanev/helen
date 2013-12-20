@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:substituteby="common/layout :: [//head]">
+</head>
+<body>
+<div class="mainWrapper">
+    <header th:substituteby="common/layout :: [//header]"></header>
+    <div class="container page-content">
+        <div class="row" sec:authorize="hasRole('MANAGER')">
+            <div class="span12">
+                <a href="/new" class="btn" th:href="@{'/' + ${currentPage} + '/new'}">Создать</a>
+            </div>
+        </div>
+        <div class="row" th:if="${domainObjects}">
+            <div class="span12">
+                <span th:text="${'Всего записей: ' + #lists.size(domainObjects)}">Objects count</span>
+            </div>
+        </div>
+        <div class="row" th:each="domainObject : ${domainObjects}">
+            <span class="span12" th:include="${'/templates/' + currentPage} :: listElement" th:with="domainObject=${domainObject}"></span>
+        </div>
+    </div>
+</div>
+<footer th:substituteby="common/layout :: [//footer]"></footer>
+<div th:substituteby="common/layout :: foot" th:remove="tag"></div>
+</body>
+</html>

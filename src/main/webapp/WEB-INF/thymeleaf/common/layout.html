@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title th:text="#{page.title(#{'tenant.name'}, #{'page.'+${currentPage}+'.name'})}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta name="description" content="description" th:attr="content=#{tenant.description}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="publisher" href="#" th:attr="href=#{tenant.url}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/2.3.2/css/bootstrap.min.css}" href="#"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/2.3.2/css/bootstrap-responsive.min.css}" href="#"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/3.2.1/css/font-awesome.min.css}" href="#"/>
+    <!--<link rel="stylesheet" th:href="@{/webjars/flat-ui/bcaf2de95e/css/flat-ui.css}" href="#"/>-->
+    <link rel="stylesheet" th:href="@{/resources/css/main.css}" href="#"/>
+</head>
+<body>
+<div class="mainWrapper">
+    <header>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/" th:text="#{tenant.name}" th:href="@{/}">Company name</a>
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            <li th:each="navItem : ${navItems}" th:class="(${currentPage} == ${navItem}) ? 'active'">
+                                <a href="#" th:href="@{'/' + ${navItem}}" th:text="${#messages.msg('page.'+navItem+'.link.label')}">Nav link</a>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right" sec:authorize="!isAuthenticated()">
+                            <li><a href="/signup" th:href="@{/signup}" th:text="#{action.signup.label}">Sign Up</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                    <span th:text="#{action.login.label}" th:remove="tag">Sign In</span>
+                                    <strong class="caret"></strong>
+                                </a>
+
+                                <div class="dropdown-menu" style="padding: 15px 15px 0;">
+                                    <form action="/login" method="POST" th:action="@{/j_spring_security_check}">
+                                        <input id="j_username" name="j_username" type="text" placeholder="Имя пользователя" autofocus="autofocus"
+                                               th:attr="placeholder=#{form.login.username}"/>
+                                        <input id="j_password" name="j_password" type="password" placeholder="Пароль"
+                                               th:attr="placeholder=#{form.login.password}"/>
+                                        <input type="submit" value="Вход" class="btn btn-primary btn-block" th:value="#{form.login.submit}"/>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right" sec:authorize="isAuthenticated()">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle profile-link" href="#" data-toggle="dropdown">
+                                    <span th:text="${currentUser.firstName + ' ' + currentUser.lastName}" th:remove="tag">FirstName LastName</span>
+                                    <strong class="caret"></strong>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="/profile/id/edit" th:href="@{'/profile/' + ${currentUser.id}}" th:text="#{page.profile.link.label}">Settings</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/j_spring_security_logout" th:href="@{/j_spring_security_logout}" th:text="#{action.logout.label}">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container page-content">
+        Базовая страница
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <!--<span th:text="">TODO: Сюда текст про команду, если можно</span>-->
+                <!--<a href="#" th:href="@{/simulateError}">Ошибка</a>-->
+            </div>
+            <div class="span6 company-title">
+                <span th:text="${#messages.msg('tenant.name') + ', ' + #calendars.format(#calendars.createToday(), 'yyyy')}">Copy</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<div th:fragment="foot" th:remove="tag">
+    <script th:src="@{/webjars/jquery/1.10.2/jquery.js}"></script>
+    <script th:src="@{/webjars/bootstrap/2.3.2/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap-datetimepicker/6aa746736d/js/bootstrap-datetimepicker.min.js}"></script>
+    <script th:src="@{/resources/js/thymol.js}"></script>
+    <script th:src="@{/resources/js/setThPath.js}"></script>
+    <script th:src="@{/resources/js/main.js}"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common/layout :: [//head]">
+</head>
+<body>
+<div class="mainWrapper">
+    <header th:substituteby="common/layout :: [//header]"></header>
+    <div class="container page-content">
+        <form id="domainObjectEditForm" th:substituteby="${'/templates/' + currentPage} :: editForm">
+            <fieldset>
+                <legend>Create / Edit domain object</legend>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<footer th:substituteby="common/layout :: [//footer]"></footer>
+<div th:substituteby="common/layout :: foot" th:remove="tag"></div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common/layout :: [//head]">
+</head>
+<body>
+<div class="mainWrapper">
+    <header th:substituteby="common/layout :: [//header]"></header>
+    <div class="container page-content">
+        <div class="row">
+            <div class="span12">
+                <form id="blogRecordEditForm" action="/createOrUpdate" method="post" class="form-horizontal"
+                      th:fragment="editForm"
+                      th:action="@{${#httpServletRequest.servletPath}}"
+                      th:method="${domainObject['new']} ? 'post' : 'put'"
+                      th:object="${domainObject}">
+                    <fieldset>
+                        <legend>Запись в блоге</legend>
+                        <div class="control-group">
+                            <label for="recordName" class="control-label">Название</label>
+
+                            <div class="controls">
+                                <input id="recordName" type="text" class="input-xxlarge" th:field="*{name}"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="recordText" class="control-label">Текст</label>
+
+                            <div class="controls">
+                                <textarea id="recordText" rows="5" cols="20" class="input-xxlarge" th:field="*{text}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="submit" class="btn btn-primary" value="Сохранить"/>
+                                <input type="button" class="btn" value="Отменить"
+                                       onclick="history.back(); return false;"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="row" th:fragment="viewForm">
+            <div class="span12" th:object="${domainObject}">
+                <div class="row">
+                    <span class="span6">Название</span>
+                    <span class="span6" th:text="*{name}">Name</span>
+                </div>
+                <div class="row">
+                    <span class="span6">Дата публикации</span>
+                    <span class="span6" th:text="*{pubDate}">PubDate</span>
+                </div>
+                <div class="row">
+                    <span class="span6">Содержание</span>
+                    <span class="span6" th:text="*{text}">Text</span>
+                </div>
+            </div>
+        </div>
+        <div th:fragment="listElement">
+            <div class="row">
+                <span class="span6" th:text="${domainObject.name}">Название</span>
+                <span class="span6" style="text-align: right;">
+                    <a href="/page/id" th:href="@{${#httpServletRequest.servletPath + '/' + domainObject.id}}">
+                        Просмотр
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:substituteby="common/layout :: [//footer]"></footer>
+<div th:substituteby="common/layout :: foot" th:remove="tag"></div>
+</body>
+</html>

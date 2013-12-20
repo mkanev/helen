@@ -1,0 +1,85 @@
+@import 'partials/_fonts';
+@import 'partials/_mixins';
+@import 'partials/_vars';
+@import 'partials/_structure';
+@import 'partials/_common';
+
+// Page
+//  @primary-color: @color-orange;
+//  @primary-color: @color-wisteria;
+//  @primary-color: @color-green-sea;
+@primary-color: @color-nephritis;
+@highlight: @color-white;
+
+header a.profile-link {
+  color: @color-carrot !important;
+  font-weight: bolder;
+}
+
+footer .company-title {
+  .fit-line-height(@footer-height, .9, 1);
+  text-align: right;
+}
+
+//footer .powered-by-block {
+//  .fit-line-height(@footer-height, .9, 1);
+//  text-align: right;
+//}
+
+// Seminars
+.thumbnails li {
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnail {
+  cursor: pointer;
+}
+
+.thumbnail a {
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.thumbnail a span.caption {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 95%;
+  height: 100%;
+  color: #fff !important;
+  z-index: 10;
+}
+
+.thumbnail a:hover span.caption {
+  display: block;
+}
+
+// Blog
+.record {
+  margin: 10px 0;
+}
+
+.record .title {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.record .short {
+  line-height: 1.35;
+}
+
+.record .related {
+  margin-top: 5px;
+}
+
+.record .timestamp {
+
+}
+
+.record .author {
+
+}
