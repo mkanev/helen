@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "hel_roles")
-public class Role extends Struct implements GrantedAuthority {
+public class Role extends GenericEntity implements GrantedAuthority {
 
     @Column(nullable = false)
     @NotEmpty

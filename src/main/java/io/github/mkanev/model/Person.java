@@ -1,18 +1,18 @@
 package io.github.mkanev.model;
 
+import com.google.common.base.Objects;
+
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
-import io.github.mkanev.common.LoggedClass;
-
 /**
  * @author Maksim Kanev
  */
 @MappedSuperclass
-public class Person extends Struct {
+public class Person extends GenericEntity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -78,11 +78,11 @@ public class Person extends Struct {
 
     @Override
     public String toString() {
-        return LoggedClass.getStaticInstance()
-                   .getNewProtocolBuilder()
-                   .append("firstName", firstName)
-                   .append("lastName", lastName)
-                   .append("patronym", patronym)
+        return Objects.toStringHelper(this)
+                   .add("lastName", lastName)
+                   .add("firstName", firstName)
+                   .add("patronym", patronym)
+                   .add("email", email)
                    .toString() + super.toString();
     }
 

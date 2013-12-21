@@ -1,5 +1,7 @@
 package io.github.mkanev.model;
 
+import com.google.common.base.Objects;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,15 +10,13 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import io.github.mkanev.common.LoggedClass;
-
 
 /**
  * @author Maksim Kanev
  */
 @MappedSuperclass
-@EntityListeners({StructListener.class})
-public abstract class Struct extends BaseDBObject {
+@EntityListeners({GenericEntityListener.class})
+public abstract class GenericEntity extends BaseDBObject {
 
     public static final String FIELD_UPDATE_DATE = "updateDate";
     private static final long serialVersionUID = -974110180786730119L;
@@ -55,12 +55,10 @@ public abstract class Struct extends BaseDBObject {
 
     @Override
     public String toString() {
-        return LoggedClass.getStaticInstance()
-                   .getNewProtocolBuilder()
-                   .append("insertDate", insertDate)
-                   .append("updateDate", updateDate)
-                   .append("uuid", uuid)
+        return Objects.toStringHelper(this)
+                   .add("insertDate", insertDate)
+                   .add("updateDate", updateDate)
+                   .add("uuid", uuid)
                    .toString() + super.toString();
     }
-
 }

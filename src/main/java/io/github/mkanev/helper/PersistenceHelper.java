@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Map;
 
-import io.github.mkanev.model.Struct;
+import io.github.mkanev.model.GenericEntity;
 import io.github.mkanev.model.User;
 
 
@@ -15,16 +15,16 @@ import io.github.mkanev.model.User;
  */
 public interface PersistenceHelper {
 
-    <TDomain extends Struct> TDomain findDomainObjectByPrimaryKey(Class<TDomain> clazz, Long id);
+    <TDomain extends GenericEntity> TDomain findDomainObjectByPrimaryKey(Class<TDomain> clazz, Long id);
 
     User findByUsername(String username);
 
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    <T extends Struct> T saveOrUpdateDomainObject(T domainObject);
+    <T extends GenericEntity> T saveOrUpdateDomainObject(T domainObject);
 
-    <T extends Struct> List<T> getAllDomainObjects(Class<T> clazz);
+    <T extends GenericEntity> List<T> getAllDomainObjects(Class<T> clazz);
 
-    <T extends Struct> List<T> getDomainObjectsList(Class<T> clazz, Map<String, Object> paramsMap);
+    <T extends GenericEntity> List<T> getDomainObjectsList(Class<T> clazz, Map<String, Object> paramsMap);
 
-    <T extends Struct> List<T> getDomainObjectsPage(Class<T> clazz, Map<String, Object> paramsMap, Integer pageNum, Integer pageSize);
+    <T extends GenericEntity> List<T> getDomainObjectsPage(Class<T> clazz, Map<String, Object> paramsMap, Integer pageNum, Integer pageSize);
 }

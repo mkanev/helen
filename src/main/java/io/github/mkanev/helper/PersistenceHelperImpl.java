@@ -16,7 +16,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import io.github.mkanev.common.LoggedClass;
-import io.github.mkanev.model.Struct;
+import io.github.mkanev.model.GenericEntity;
 import io.github.mkanev.model.User;
 
 /**
@@ -30,7 +30,7 @@ public class PersistenceHelperImpl extends LoggedClass implements PersistenceHel
     private EntityManager entityManager;
 
     @Override
-    public <TDomain extends Struct> TDomain findDomainObjectByPrimaryKey(Class<TDomain> clazz, Long id) {
+    public <TDomain extends GenericEntity> TDomain findDomainObjectByPrimaryKey(Class<TDomain> clazz, Long id) {
         try {
             return entityManager.find(clazz, id);
         } catch (PersistenceException e) {
@@ -46,7 +46,7 @@ public class PersistenceHelperImpl extends LoggedClass implements PersistenceHel
         return findByDefaultField(User.class, paramsMap);
     }
 
-    private <T extends Struct> T findByDefaultField(Class<T> clazz, Map<String, Object> paramsMap) {
+    private <T extends GenericEntity> T findByDefaultField(Class<T> clazz, Map<String, Object> paramsMap) {
         try {
             TypedQuery<T> namedQuery = entityManager.createNamedQuery(clazz.getSimpleName() + ".DEFAULT_FIND_QUERY", clazz);
             for (Map.Entry<String, Object> param : paramsMap.entrySet()) {
@@ -68,7 +68,7 @@ public class PersistenceHelperImpl extends LoggedClass implements PersistenceHel
     }
 
     @Transactional(readOnly = false, rollbackFor = Exception.class)
-    public <T extends Struct> T saveOrUpdateDomainObject(T domainObject) {
+    public <T extends GenericEntity> T saveOrUpdateDomainObject(T domainObject) {
         if (domainObject.isBlank()) {
             entityManager.persist(domainObject);
         } else {
@@ -79,17 +79,17 @@ public class PersistenceHelperImpl extends LoggedClass implements PersistenceHel
     }
 
     @Override
-    public <T extends Struct> List<T> getAllDomainObjects(Class<T> clazz) {
+    public <T extends GenericEntity> List<T> getAllDomainObjects(Class<T> clazz) {
         return getDomainObjectsList(clazz, null);
     }
 
     @Override
-    public <T extends Struct> List<T> getDomainObjectsList(Class<T> clazz, Map<String, Object> paramsMap) {
+    public <T extends GenericEntity> List<T> getDomainObjectsList(Class<T> clazz, Map<String, Object> paramsMap) {
         return getDomainObjectsPage(clazz, paramsMap, null, null);
     }
 
     @Override
-    public <T extends Struct> List<T> getDomainObjectsPage(Class<T> clazz, Map<String, Object> paramsMap, Integer pageNum, Integer pageSize) {
+    public <T extends GenericEntity> List<T> getDomainObjectsPage(Class<T> clazz, Map<String, Object> paramsMap, Integer pageNum, Integer pageSize) {
         try {
             StringBuilder querySb = new StringBuilder("from ").append(clazz.getName()).append(" o ");
             if (paramsMap != null && !paramsMap.isEmpty()) {

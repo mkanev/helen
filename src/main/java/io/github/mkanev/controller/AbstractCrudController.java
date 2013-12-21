@@ -15,13 +15,13 @@ import javax.validation.Valid;
 
 import io.github.mkanev.helper.PathHelper;
 import io.github.mkanev.helper.PersistenceHelper;
-import io.github.mkanev.model.Struct;
+import io.github.mkanev.model.GenericEntity;
 
 /**
  * Created with IntelliJ IDEA. User: Maksim Kanev Date: 13.08.13 Time: 13:06
  */
 @SessionAttributes({"domainObject"})
-public abstract class AbstractCrudController<TDomain extends Struct> extends AbstractController {
+public abstract class AbstractCrudController<TDomain extends GenericEntity> extends AbstractController {
 
     private static final String DEFAULT_MODEL_ATTRIBUTE_NAME = "domainObject";
     private final Class<TDomain> handledClass;
@@ -40,7 +40,8 @@ public abstract class AbstractCrudController<TDomain extends Struct> extends Abs
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String processCreateDomainObjectForm(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, SessionStatus status, Model model) {
+    public String processCreateDomainObjectForm(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, SessionStatus status,
+                                                Model model) {
         if (result.hasErrors()) {
             return "/common/edit";
         } else {
@@ -57,7 +58,8 @@ public abstract class AbstractCrudController<TDomain extends Struct> extends Abs
     }
 
     @RequestMapping(value = "/{domainObjectId}/edit", method = RequestMethod.PUT)
-    public String processUpdateDomainObjectForm(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, Model model, SessionStatus status) {
+    public String processUpdateDomainObjectForm(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, Model model,
+                                                SessionStatus status) {
         if (result.hasErrors()) {
             return "/common/edit";
         } else {

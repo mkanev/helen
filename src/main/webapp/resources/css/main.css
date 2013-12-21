@@ -1,17 +1,126 @@
-@font-face{font-family:'kelson_sans_rubold';src:url('/resources/font/kelson/kelson_sans_bold_ru.eot');src:url('/resources/font/kelson/kelson_sans_bold_ru.eot?#iefix') format('embedded-opentype'),url('/resources/font/kelson/kelson_sans_bold_ru.woff') format('woff'),url('/resources/font/kelson/kelson_sans_bold_ru.ttf') format('truetype');}@font-face{font-family:'kelson_sans_rulight';src:url('/resources/font/kelson/kelson_sans_light_ru.eot');src:url('/resources/font/kelson/kelson_sans_light_ru.eot?#iefix') format('embedded-opentype'),url('/resources/font/kelson/kelson_sans_light_ru.woff') format('woff'),url('/resources/font/kelson/kelson_sans_light_ru.ttf') format('truetype');}@font-face{font-family:'kelson_sans_ruregular';src:url('/resources/font/kelson/kelson_sans_regular_ru.eot');src:url('/resources/font/kelson/kelson_sans_regular_ru.eot?#iefix') format('embedded-opentype'),url('/resources/font/kelson/kelson_sans_regular_ru.woff') format('woff'),url('/resources/font/kelson/kelson_sans_regular_ru.ttf') format('truetype');}@font-face{font-family:'kelson_sans_rubold';src:url('/resources/font/kelson/kelson_sans_bold_ru.eot');src:url('/resources/font/kelson/kelson_sans_bold_ru.eot?#iefix') format('embedded-opentype'),url('/resources/font/kelson/kelson_sans_bold_ru.woff') format('woff'),url('/resources/font/kelson/kelson_sans_bold_ru.ttf') format('truetype');}@font-face{font-family:'kelson_sans_rulight';src:url('/resources/font/kelson/kelson_sans_light_ru.eot');src:url('/resources/font/kelson/kelson_sans_light_ru.eot?#iefix') format('embedded-opentype'),url('/resources/font/kelson/kelson_sans_light_ru.woff') format('woff'),url('/resources/font/kelson/kelson_sans_light_ru.ttf') format('truetype');}@font-face{font-family:'kelson_sans_ruregular';src:url('/resources/font/kelson/kelson_sans_regular_ru.eot');src:url('/resources/font/kelson/kelson_sans_regular_ru.eot?#iefix') format('embedded-opentype'),url('/resources/font/kelson/kelson_sans_regular_ru.woff') format('woff'),url('/resources/font/kelson/kelson_sans_regular_ru.ttf') format('truetype');}html,body{height:100%;}
-.mainWrapper{min-height:100%;}
-.page-content{margin-bottom:30px;padding-top:75px;}
-header{font-family:kelson_sans_rulight,"Helvetica Neue",Arial,"Liberation Sans",FreeSans,sans-serif;}
-footer{position:relative;clear:both;margin-top:-30px;height:30px;font-family:kelson_sans_rulight,"Helvetica Neue",Arial,"Liberation Sans",FreeSans,sans-serif;}
-.center{text-align:center;margin:auto;}
-header a.profile-link{color:#e67e22 !important;font-weight:bolder;}
-footer .company-title{font-size:9px;font-size:0.9rem;margin-top:10.5px;line-height:1em;text-align:right;}
-.thumbnails li{position:relative;overflow:hidden;}
-.thumbnail{cursor:pointer;}
-.thumbnail a{text-align:center;text-decoration:none;cursor:pointer;}
-.thumbnail a span.caption{display:none;position:absolute;top:0;left:0;background:rgba(0, 0, 0, 0.4);width:95%;height:100%;color:#fff !important;z-index:10;}
-.thumbnail a:hover span.caption{display:block;}
-.record{margin:10px 0;}
-.record .title{font-size:larger;font-weight:bolder;}
-.record .short{line-height:1.35;}
-.record .related{margin-top:5px;}
+@font-face {
+    font-family: 'kelson_sans_rubold';
+    src: url('/resources/font/kelson/kelson_sans_bold_ru.eot');
+    src: url('/resources/font/kelson/kelson_sans_bold_ru.eot?#iefix') format('embedded-opentype'), url('/resources/font/kelson/kelson_sans_bold_ru.woff') format('woff'), url('/resources/font/kelson/kelson_sans_bold_ru.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'kelson_sans_rulight';
+    src: url('/resources/font/kelson/kelson_sans_light_ru.eot');
+    src: url('/resources/font/kelson/kelson_sans_light_ru.eot?#iefix') format('embedded-opentype'), url('/resources/font/kelson/kelson_sans_light_ru.woff') format('woff'), url('/resources/font/kelson/kelson_sans_light_ru.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'kelson_sans_ruregular';
+    src: url('/resources/font/kelson/kelson_sans_regular_ru.eot');
+    src: url('/resources/font/kelson/kelson_sans_regular_ru.eot?#iefix') format('embedded-opentype'), url('/resources/font/kelson/kelson_sans_regular_ru.woff') format('woff'), url('/resources/font/kelson/kelson_sans_regular_ru.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'kelson_sans_rubold';
+    src: url('/resources/font/kelson/kelson_sans_bold_ru.eot');
+    src: url('/resources/font/kelson/kelson_sans_bold_ru.eot?#iefix') format('embedded-opentype'), url('/resources/font/kelson/kelson_sans_bold_ru.woff') format('woff'), url('/resources/font/kelson/kelson_sans_bold_ru.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'kelson_sans_rulight';
+    src: url('/resources/font/kelson/kelson_sans_light_ru.eot');
+    src: url('/resources/font/kelson/kelson_sans_light_ru.eot?#iefix') format('embedded-opentype'), url('/resources/font/kelson/kelson_sans_light_ru.woff') format('woff'), url('/resources/font/kelson/kelson_sans_light_ru.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'kelson_sans_ruregular';
+    src: url('/resources/font/kelson/kelson_sans_regular_ru.eot');
+    src: url('/resources/font/kelson/kelson_sans_regular_ru.eot?#iefix') format('embedded-opentype'), url('/resources/font/kelson/kelson_sans_regular_ru.woff') format('woff'), url('/resources/font/kelson/kelson_sans_regular_ru.ttf') format('truetype');
+}
+
+html, body {
+    height: 100%;
+}
+
+.mainWrapper {
+    min-height: 100%;
+}
+
+.page-content {
+    margin-bottom: 30px;
+    padding-top: 75px;
+}
+
+header {
+    font-family: kelson_sans_rulight, "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+}
+
+footer {
+    position: relative;
+    clear: both;
+    margin-top: -30px;
+    height: 30px;
+    font-family: kelson_sans_rulight, "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+header a.profile-link {
+    color: #e67e22 !important;
+    font-weight: bolder;
+}
+
+footer .company-title {
+    font-size: 9px;
+    font-size: 0.9rem;
+    margin-top: 10.5px;
+    line-height: 1em;
+    text-align: right;
+}
+
+.thumbnails li {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnail {
+    cursor: pointer;
+}
+
+.thumbnail a {
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.thumbnail a span.caption {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    width: 95%;
+    height: 100%;
+    color: #fff !important;
+    z-index: 10;
+}
+
+.thumbnail a:hover span.caption {
+    display: block;
+}
+
+.record {
+    margin: 10px 0;
+}
+
+.record .title {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.record .short {
+    line-height: 1.35;
+}
+
+.record .related {
+    margin-top: 5px;
+}

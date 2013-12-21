@@ -1,13 +1,13 @@
 package io.github.mkanev.model;
 
+import com.google.common.base.Objects;
+
 import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-import io.github.mkanev.common.LoggedClass;
 
 /**
  * @author Maksim Kanev
@@ -43,26 +43,27 @@ public abstract class BaseDBObject extends BaseObject implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + (this.id != null ? this.id.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BaseDBObject that = (BaseDBObject) o;
+        return Objects.equal(this.id, that.id);
     }
 
     @Override
-    public boolean equals(Object from) {
-
-        return from instanceof BaseDBObject
-               && id != null
-               && id.equals(((BaseDBObject) from).id);
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
-        return LoggedClass.getStaticInstance()
-            .getNewProtocolBuilder()
-            .append("id", id)
-            .append("class", getClass().getCanonicalName())
+        return Objects.toStringHelper(this)
+            .add("id", id)
+            .add("class", getClass().getCanonicalName())
             .toString();
     }
 

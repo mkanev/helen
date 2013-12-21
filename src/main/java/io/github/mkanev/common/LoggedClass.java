@@ -1,7 +1,5 @@
 package io.github.mkanev.common;
 
-import org.apache.commons.lang.builder.StandardToStringStyle;
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.log4j.Logger;
 
 import java.io.Serializable;
@@ -12,15 +10,6 @@ import java.io.Serializable;
 public class LoggedClass implements Serializable {
 
     private static final long serialVersionUID = 2163919862005646481L;
-    private static final transient StandardToStringStyle style = new StandardToStringStyle();
-
-    static {
-        style.setFieldSeparator(", ");
-        style.setUseClassName(false);
-        style.setUseIdentityHashCode(false);
-    }
-
-    private static final LoggedClass INSTANCE = new LoggedClass();
     private transient Logger log;
 
     public LoggedClass() {
@@ -31,40 +20,46 @@ public class LoggedClass implements Serializable {
         log = Logger.getLogger(c);
     }
 
-    public static LoggedClass getStaticInstance() {
-        return INSTANCE;
-    }
-
-    public static LoggedClass newInstance(Class<?> c) {
-        return new LoggedClass(c);
-    }
-
     public Logger getLogger() {
         return log;
     }
 
-    public void logDebug(String msg) {
-
-        if (log.isDebugEnabled()) {
-            log.debug(msg);
-        }
-    }
-
-    public void logDebug(String msg, Exception e) {
-        if (log.isDebugEnabled()) {
-            log.debug(msg, e);
-        }
+    public void logDebug(String msg, Object... messageParams) {
+        logDebug(msg, null, messageParams);
     }
 
     public void logDebug(Exception e) {
+        logDebug(e.getLocalizedMessage(), e);
+    }
 
+    public void logDebug(String message, Exception e, Object... messageParams) {
         if (log.isDebugEnabled()) {
-            log.debug(e.getLocalizedMessage(), e);
+            log.debug(String.format(message, messageParams), e);
         }
     }
 
-    public ToStringBuilder getNewProtocolBuilder() {
-        return new ToStringBuilder(this, style);
+    public void logWarning(String message, Object... messageParams) {
+        logWarning(message, null, messageParams);
+    }
+
+    public void logWarning(Exception e) {
+        logWarning(e.getLocalizedMessage(), e);
+    }
+
+    public void logWarning(String message, Exception e, Object... messageParams) {
+        log.warn(String.format(message, messageParams), e);
+    }
+
+    public void logError(String message, Object... messageParams) {
+        logError(message, null, messageParams);
+    }
+
+    public void logError(Exception e) {
+        logError(e.getLocalizedMessage(), e);
+    }
+
+    public void logError(String message, Exception e, Object... messageParams) {
+        log.error(String.format(message, messageParams), e);
     }
 
 }
