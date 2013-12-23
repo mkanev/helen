@@ -2,7 +2,6 @@ package io.github.mkanev.model;
 
 import com.google.common.base.Objects;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Column;
@@ -17,7 +16,6 @@ import javax.persistence.Table;
 public class Role extends GenericEntity implements GrantedAuthority {
 
     @Column(nullable = false)
-    @NotEmpty
     private String name;
 
     public Role() {

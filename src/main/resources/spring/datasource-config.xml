@@ -23,21 +23,34 @@
     </bean>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource" p:persistenceUnitName="helenJPA" p:packagesToScan="io.github.mkanev.model"
-          p:persistenceProviderClass="org.hibernate.ejb.HibernatePersistence">
+          p:persistenceProviderClass="org.eclipse.persistence.jpa.PersistenceProvider">
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="databasePlatform" value="${hibernate.dialect}"/>
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
                 <property name="showSql" value="${jdbc.show-sql}"/>
+                <property name="databasePlatform" value="${jdbc.target-db}}"/>
             </bean>
         </property>
         <property name="jpaPropertyMap">
             <map>
-                <entry key="hibernate.query.substitutions" value="true 'Y', false 'N'"/>
-                <entry key="hibernate.cache.use_second_level_cache" value="true"/>
+                <entry key="eclipselink.cache.type.default" value="SoftWeak"/>
+                <entry key="eclipselink.cache.size.default" value="3000"/>
+                <entry key="eclipselink.cache.shared.default" value="true"/>
+                <entry key="eclipselink.weaving.eager" value="true"/>
+                <entry key="eclipselink.allow-zero-id" value="true"/>
+                <entry key="eclipselink.target-server" value="SunAS9"/>
+                <entry key="eclipselink.application-location" value="./"/>
+                <entry key="eclipselink.target-database" value="MySQL"/>
+                <entry key="eclipselink.logging.level" value="SEVERE"/>
+                <entry key="eclipselink.logging.parameters" value="true"/>
             </map>
         </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+        </property>
+        <!--<property name="loadTimeWeaver">-->
+        <!--<bean class="org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver"/>-->
+        <!--</property>-->
     </bean>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-    <bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator"/>
 </beans>

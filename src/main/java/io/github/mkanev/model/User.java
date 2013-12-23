@@ -24,7 +24,7 @@ import javax.validation.constraints.Pattern;
 @Entity
 @Table(name = "hel_users")
 @NamedQuery(name = "User.DEFAULT_FIND_QUERY", query = "select o from User o where o.username = :username")
-public final class User extends Person implements Comparable<User> {
+public class User extends Person implements Comparable<User> {
 
     @Pattern(regexp = "[a-zA-Z0-9._-]+")
     @Index(name = "idx_username")

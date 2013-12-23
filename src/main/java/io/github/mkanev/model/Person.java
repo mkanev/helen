@@ -2,11 +2,14 @@ package io.github.mkanev.model;
 
 import com.google.common.base.Objects;
 
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDateTime;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Maksim Kanev
@@ -18,11 +21,11 @@ public class Person extends GenericEntity {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "patronym", nullable = false)
-    private String patronym;
+    @Column(name = "patronymic", nullable = false)
+    private String patronymic;
     @Column(nullable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    private LocalDateTime birthday;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date birthday;
     @Column(nullable = false)
     private String email;
     @Column(name = "cell_phone")
@@ -44,19 +47,25 @@ public class Person extends GenericEntity {
         this.lastName = lastName;
     }
 
-    public String getPatronym() {
-        return patronym;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setPatronym(String patronym) {
-        this.patronym = patronym;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
-    public LocalDateTime getBirthday() {
+    public String getFullName() {
+        return (StringUtils.isBlank(lastName) ? "" : lastName + " ")
+               + (StringUtils.isBlank(firstName) ? "" : firstName + " ")
+               + (StringUtils.isBlank(patronymic) ? "" : patronymic + " ");
+    }
+
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -81,7 +90,7 @@ public class Person extends GenericEntity {
         return Objects.toStringHelper(this)
                    .add("lastName", lastName)
                    .add("firstName", firstName)
-                   .add("patronym", patronym)
+                   .add("patronymic", patronymic)
                    .add("email", email)
                    .toString() + super.toString();
     }

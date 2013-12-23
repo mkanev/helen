@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title th:text="#{page.title(#{'tenant.name'}, #{'page.'+${currentPage}+'.name'})}"></title>
+    <title th:text="#{page.title(#{'system.name'}, #{'page.'+${currentPage}+'.name'})}"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="description" th:attr="content=#{tenant.description}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -11,7 +11,6 @@
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.0.0/css/bootstrap.min.css}" href="#"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.0.0/css/bootstrap-responsive.min.css}" href="#"/>
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/3.2.1/css/font-awesome.min.css}" href="#"/>
-    <!--<link rel="stylesheet" th:href="@{/webjars/flat-ui/bcaf2de95e/css/flat-ui.css}" href="#"/>-->
     <link rel="stylesheet" th:href="@{/resources/css/main.css}" href="#"/>
 </head>
 <body>
@@ -36,11 +35,10 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" sec:authorize="!isAuthenticated()">
-                        <!--<li><a href="/signup" th:href="@{/signup}" th:text="#{action.signup.label}">Sign Up</a></li>-->
                         <li><a href="/login" th:href="@{/login}" th:text="#{action.login.label}">Sign In</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
-                        <li class="navbar-text"><span th:text="${currentUser.firstName + ' ' + currentUser.lastName}" th:remove="tag">FirstName LastName</span></li>
+                        <li class="navbar-text"><span th:text="${currentUser.fullName}" th:remove="tag">Full name</span></li>
                         <li><a href="/j_spring_security_logout" th:href="@{/j_spring_security_logout}" th:text="#{action.logout.label}">Logout</a></li>
                     </ul>
                 </div>
@@ -59,7 +57,7 @@
                 <!--<a href="#" th:href="@{/simulateError}">Ошибка</a>-->
             </div>
             <div class="col-lg-6" style="text-align: right;">
-            <span th:text="${#messages.msg('tenant.name') + ', ' + #calendars.format(#calendars.createToday(), 'yyyy')}">Copy</span>
+                <span th:text="${#messages.msg('tenant.name') + ', ' + #calendars.format(#calendars.createToday(), 'yyyy')}">Copy</span>
             </div>
         </div>
     </div>
