@@ -22,7 +22,7 @@ import javax.validation.constraints.Pattern;
  * Created with IntelliJ IDEA. User: Maksim Kanev Date: 10.08.13 Time: 19:42
  */
 @Entity
-@Table(name = "psk_users")
+@Table(name = "hel_users")
 @NamedQuery(name = "User.DEFAULT_FIND_QUERY", query = "select o from User o where o.username = :username")
 public final class User extends Person implements Comparable<User> {
 
@@ -31,7 +31,7 @@ public final class User extends Person implements Comparable<User> {
     private String username;
     private String password;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
-    @JoinTable(name = "psk_users_roles",
+    @JoinTable(name = "hel_users_roles",
                joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
                inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;

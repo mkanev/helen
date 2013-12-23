@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head th:substituteby="common/layout :: [//head]">
 </head>
 <body>
@@ -8,7 +8,7 @@
     <!--<header th:substituteby="common/layout :: [//header]"></header>-->
     <div class="container page-content">
         <div class="row">
-            <div class="hero-unit center">
+            <div class="jumbotron center">
                 <h1>Ой, что-то сломалось
                     <small class="text-error" th:text="${errorCode}">Ошибка системы</small>
                 </h1>
@@ -25,16 +25,18 @@
         <br/>
 
         <div class="row">
-            <div class="accordion" id="accordion2">
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                            <span th:text="#{error.accordion.heading}">Technical information</span>
-                        </a>
+            <div class="panel-group" id="accordion2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="collapsed" href="#collapseOne" data-toggle="collapse" data-parent="#accordion2">
+                                <span th:text="#{error.accordion.heading}">Technical information</span>
+                            </a>
+                        </h4>
                     </div>
-                    <div id="collapseOne" class="accordion-body collapse in">
-                        <div class="accordion-inner" th:utext="${errorMessage}">
-                            Error java.lang.NullPointerException
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body" th:utext="${errorMessage}">
+                            Error java.lang.Exception
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ public abstract class BaseDBObject extends BaseObject implements Serializable {
     public static final String FIELD_DELETED = "deleted";
     private static final long serialVersionUID = -7254989743482726486L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private boolean deleted;
 

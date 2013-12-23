@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head th:include="common/layout :: [//head]" th:with="currentPage='signup'">
 </head>
 <body>
 <div class="mainWrapper">
     <div class="container page-content">
         <div class="row">
-            <div class="span6 offset3">
-                <form id="signupForm" method="POST" class="form-horizontal" th:action="@{/j_spring_security_check}">
+            <div class="col-lg-6 col-lg-offset-3">
+                <form id="signupForm" method="POST" role="form" class="form-horizontal" th:action="@{/j_spring_security_check}">
                     <fieldset>
                         <legend th:text="#{form.signup.legend}">Sign Up Form</legend>
-                        <div class="control-group">
-                            <label class="control-label" th:text="#{form.signup.username}">Username</label>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" th:text="#{form.signup.username}">Username</label>
 
-                            <div class="controls">
-                                <input type="text" id="j_username" name="j_username" autofocus="autofocus"/>
+                            <div class="col-lg-8">
+                                <input type="text" id="j_username" name="j_username" class="form-control" autofocus="autofocus"/>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label class="control-label" th:text="#{form.signup.password}">Password</label>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label" th:text="#{form.signup.password}">Password</label>
 
-                            <div class="controls">
-                                <input type="password" id="j_password" name="j_password"/>
+                            <div class="col-lg-8">
+                                <input type="password" id="j_password" name="j_password" class="form-control"/>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <a href="./index.html" class="control-label" th:href="@{/index}">Назад</a>
+                        <div class="form-group">
+                            <a class="col-lg-4 control-label" href="./index.html" th:href="@{/index}">Назад</a>
 
-                            <div class="controls">
+                            <div class="col-lg-8">
                                 <input type="submit" value="Sign Up" class="btn btn-info" th:value="#{form.signup.submit}"/>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ import io.github.mkanev.model.User;
  */
 public abstract class AbstractController extends LoggedClass {
 
-    private static final String[] NAV_ITEMS = new String[]{"index", "blog"};
+    private static final String[] NAV_ITEMS = new String[]{"index"};
     @Autowired
     private SecurityHelper securityHelper;
     private ActionType defaultActionType;
