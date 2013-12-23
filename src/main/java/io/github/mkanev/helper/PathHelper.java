@@ -5,7 +5,7 @@ import com.google.common.base.Strings;
 import io.github.mkanev.controller.ActionType;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public class PathHelper {
 

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @Entity
 @Table(name = "hel_roles")

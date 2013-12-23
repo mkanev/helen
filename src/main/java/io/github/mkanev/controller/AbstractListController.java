@@ -7,19 +7,19 @@ import java.util.List;
 import io.github.mkanev.model.GenericEntity;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public abstract class AbstractListController<TDomain extends GenericEntity> extends AbstractCrudController<TDomain> {
 
     private static final ActionType ROOT_ACTION = ActionType.LIST;
 
-    AbstractListController(final Class<TDomain> handledClass) {
-        super(ROOT_ACTION, handledClass);
+    AbstractListController() {
+        super(ROOT_ACTION);
     }
 
     @ModelAttribute("domainObjects")
     public final List<TDomain> getDomainObjectsList() {
-        return persistenceHelper.getDomainObjectsList(getHandledClass(), null);
+        return entityDAO.getExistingEntityList();
     }
 
     @Override

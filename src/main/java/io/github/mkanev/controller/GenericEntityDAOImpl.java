@@ -23,16 +23,16 @@ import io.github.mkanev.model.GenericEntity;
  * {@inheritDoc}
  */
 @Transactional(readOnly = true)
-public abstract class GenericEntityControllerImpl<T extends GenericEntity, PK extends Serializable> extends LoggedClass implements GenericEntityController<T, PK> {
+public abstract class GenericEntityDAOImpl<T extends GenericEntity, PK extends Serializable> extends LoggedClass implements GenericEntityDAO<T, PK> {
 
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
     private Class<T> persistentClass;
 
-    public GenericEntityControllerImpl() {
+    public GenericEntityDAOImpl() {
     }
 
-    public GenericEntityControllerImpl(Class<T> persistentClass) {
+    public GenericEntityDAOImpl(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
     }
 
@@ -262,11 +262,32 @@ public abstract class GenericEntityControllerImpl<T extends GenericEntity, PK ex
     }
 
     /**
+     * Возвращает сущность, соответствующую запросу с параметрами, с проверкой на единственность
+     *
+     * @param query      jpql-запрос
+     * @param parameters параметры запроса
+     * @param singleOnly флаг проверки на единственность
+     */
+    protected T getQueryResult(Query query, boolean singleOnly, Object... parameters) {
+        List<T> resultList = getResultList(query, 0, 0, parameters);
+        if (CollectionUtils.isEmpty(resultList)) {
+            return null;
+        }
+        if (resultList.size() > 1) {
+            logWarning("Запрос %s вернул множество результатов [количество: %d]", query, resultList.size());
+            if (singleOnly) {
+                return null;
+            }
+        }
+        return resultList.iterator().next();
+    }
+
+    /**
      * Класс для создания запросов к БД
      */
     protected class CriteriaSet {
 
-        final CriteriaBuilder cb = GenericEntityControllerImpl.this.em.getCriteriaBuilder();
+        final CriteriaBuilder cb = GenericEntityDAOImpl.this.em.getCriteriaBuilder();
         final CriteriaQuery<T> cq = cb.createQuery(persistentClass);
         final Root<T> r = cq.from(persistentClass);
 

@@ -2,7 +2,6 @@ package io.github.mkanev.model;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -10,7 +9,7 @@ import javax.persistence.PreUpdate;
 import io.github.mkanev.common.LoggedClass;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public class GenericEntityListener extends LoggedClass {
 
@@ -24,7 +23,6 @@ public class GenericEntityListener extends LoggedClass {
         Date now = Calendar.getInstance().getTime();
         s.setInsertDate(now);
         s.setUpdateDate(now);
-        s.setUuid(UUID.randomUUID().toString());
     }
 
 }

@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @MappedSuperclass
 public class Person extends GenericEntity {

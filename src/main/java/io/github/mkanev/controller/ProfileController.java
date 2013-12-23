@@ -9,18 +9,17 @@ import org.springframework.web.servlet.ModelAndView;
 import io.github.mkanev.model.User;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @Controller
 @RequestMapping(value = "/profile")
 public class ProfileController extends AbstractCrudController<User> {
 
     private static final String CURRENT_PAGE = "profile";
-    private static final Class HANDLED_CLASS = User.class;
     private static final ActionType DEFAULT_ACTION = ActionType.NONE;
 
     public ProfileController() {
-        super(DEFAULT_ACTION, HANDLED_CLASS);
+        super(DEFAULT_ACTION);
     }
 
     @Override

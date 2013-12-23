@@ -3,6 +3,7 @@ package io.github.mkanev.model;
 import com.google.common.base.Objects;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -12,13 +13,15 @@ import javax.persistence.TemporalType;
 
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @MappedSuperclass
 @EntityListeners({GenericEntityListener.class})
 public abstract class GenericEntity extends BaseDBObject {
 
     public static final String FIELD_UPDATE_DATE = "updateDate";
+    public static final String FIELD_INSERT_DATE = "insertDate";
+    public static final String FIELD_UUID = "uuid";
     private static final long serialVersionUID = -974110180786730119L;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "insert_date")
@@ -26,8 +29,8 @@ public abstract class GenericEntity extends BaseDBObject {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
     private Date updateDate;
-    @Column(name = "uuid", nullable = false, unique = true, length = 36)
-    private String uuid;
+    @Column(name = "uuid", nullable = false, unique = true, length = 64)
+    private String uuid = UUID.randomUUID().toString();
 
     public Date getInsertDate() {
         return insertDate;

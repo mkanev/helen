@@ -14,23 +14,20 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 import io.github.mkanev.helper.PathHelper;
-import io.github.mkanev.helper.PersistenceHelper;
 import io.github.mkanev.model.GenericEntity;
 
 /**
- * Created with IntelliJ IDEA. User: Maksim Kanev Date: 13.08.13 Time: 13:06
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
-@SessionAttributes({"domainObject"})
+@SessionAttributes({AbstractCrudController.DEFAULT_MODEL_ATTRIBUTE_NAME})
 public abstract class AbstractCrudController<TDomain extends GenericEntity> extends AbstractController {
 
-    private static final String DEFAULT_MODEL_ATTRIBUTE_NAME = "domainObject";
-    private final Class<TDomain> handledClass;
+    public static final String DEFAULT_MODEL_ATTRIBUTE_NAME = "domainObject";
     @Autowired
-    protected PersistenceHelper persistenceHelper;
+    protected GenericEntityDAO<TDomain, Long> entityDAO;
 
-    AbstractCrudController(ActionType defaultActionType, final Class<TDomain> handledClass) {
+    AbstractCrudController(ActionType defaultActionType) {
         super(defaultActionType);
-        this.handledClass = handledClass;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -40,8 +37,7 @@ public abstract class AbstractCrudController<TDomain extends GenericEntity> exte
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String processCreateDomainObjectForm(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, SessionStatus status,
-                                                Model model) {
+    public String createDomainObject(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, SessionStatus status, Model model) {
         if (result.hasErrors()) {
             return "/common/edit";
         } else {
@@ -58,8 +54,7 @@ public abstract class AbstractCrudController<TDomain extends GenericEntity> exte
     }
 
     @RequestMapping(value = "/{domainObjectId}/edit", method = RequestMethod.PUT)
-    public String processUpdateDomainObjectForm(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, Model model,
-                                                SessionStatus status) {
+    public String updateDomainObject(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TDomain domainObject, BindingResult result, Model model, SessionStatus status) {
         if (result.hasErrors()) {
             return "/common/edit";
         } else {
@@ -77,16 +72,12 @@ public abstract class AbstractCrudController<TDomain extends GenericEntity> exte
         return mav;
     }
 
-    protected final Class<TDomain> getHandledClass() {
-        return handledClass;
-    }
-
     public final TDomain getDomainObjectById(Long domainObjectId) {
-        return persistenceHelper.findDomainObjectByPrimaryKey(getHandledClass(), domainObjectId);
+        return entityDAO.getEntity(domainObjectId);
     }
 
     public final TDomain saveOrUpdateDomainObject(TDomain domainObject) {
-        return persistenceHelper.saveOrUpdateDomainObject(domainObject);
+        return entityDAO.saveEntity(domainObject);
     }
 
     protected abstract TDomain createDomainObject();

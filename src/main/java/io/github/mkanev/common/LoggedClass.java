@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import java.io.Serializable;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public class LoggedClass implements Serializable {
 

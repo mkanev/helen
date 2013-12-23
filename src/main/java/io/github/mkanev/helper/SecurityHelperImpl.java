@@ -7,20 +7,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import io.github.mkanev.common.LoggedClass;
+import io.github.mkanev.controller.UserDAO;
 import io.github.mkanev.model.User;
 
 
 /**
- * Created with IntelliJ IDEA. User: Maksim Kanev Date: 10.08.13 Time: 19:36
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public class SecurityHelperImpl extends LoggedClass implements SecurityHelper {
 
     @Autowired
-    private PersistenceHelper persistenceHelper;
+    private UserDAO userDAO;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = persistenceHelper.findByUsername(username);
+        User user = userDAO.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("user not found");
         }
@@ -39,6 +40,6 @@ public class SecurityHelperImpl extends LoggedClass implements SecurityHelper {
             return null;
         }
         String currentUsername = ((org.springframework.security.core.userdetails.User) authentication.getPrincipal()).getUsername();
-        return persistenceHelper.findByUsername(currentUsername);
+        return userDAO.findByUsername(currentUsername);
     }
 }

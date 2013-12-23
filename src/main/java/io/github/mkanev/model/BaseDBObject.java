@@ -10,11 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @MappedSuperclass
 public abstract class BaseDBObject extends BaseObject implements Serializable {
 
+    public static final String FIELD_ID = "id";
     public static final String FIELD_DELETED = "deleted";
     private static final long serialVersionUID = -7254989743482726486L;
     @Id

@@ -20,7 +20,7 @@ import io.github.mkanev.model.GenericEntity;
 import io.github.mkanev.model.User;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @Repository
 @Transactional(readOnly = true)

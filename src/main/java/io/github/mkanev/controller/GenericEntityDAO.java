@@ -13,7 +13,7 @@ import io.github.mkanev.model.GenericEntity;
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a>
  * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
  */
-public interface GenericEntityController<T extends GenericEntity, PK extends Serializable> {
+public interface GenericEntityDAO<T extends GenericEntity, PK extends Serializable> {
 
     /**
      * Общий метод для получения всех сущностей одного типа. Все равно, что выгрузить все записи из таблицы.

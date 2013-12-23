@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import io.github.mkanev.model.User;
 
 /**
- * @author Maksim Kanev
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public interface SecurityHelper extends UserDetailsService {
 
