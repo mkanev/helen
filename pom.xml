@@ -238,7 +238,7 @@
         <profile>
             <id>travis</id>
             <properties>
-                <jdbc.dbname>helen-test</jdbc.dbname>
+                <jdbc.dbname>helen_test</jdbc.dbname>
                 <jdbc.username>travis</jdbc.username>
             </properties>
         </profile>
