@@ -244,6 +244,7 @@
                 <jdbc.host>127.0.0.1</jdbc.host>
                 <jdbc.port>3306</jdbc.port>
                 <jdbc.username>travis</jdbc.username>
+                <jdbc.password/>
             </properties>
         </profile>
     </profiles>
