@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="publisher" href="#" th:attr="href=#{tenant.url}"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.0.0/css/bootstrap.min.css}" href="#"/>
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/3.2.1/css/font-awesome.min.css}" href="#"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.0.3/css/font-awesome.min.css}" href="#"/>
     <link rel="stylesheet" th:href="@{/resources/css/main.css}" href="#"/>
 </head>
 <body>
@@ -28,7 +28,12 @@
                 </div>
                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="divider-vertical"></li>
+                        <li sec:authorize="hasRole('ADMIN')">
+                            <a href="#" th:href="@{/admin}">
+                                <i class="fa fa-cogs"></i>
+                                <span th:text="#{page.admin.link.label}" th:remove="tag">Admin Zone</span>
+                            </a>
+                        </li>
                         <li th:each="navItem : ${navItems}" th:class="(${currentPage} == ${navItem}) ? 'active'">
                             <a href="#" th:href="@{'/' + ${navItem}}" th:text="${#messages.msg('page.'+navItem+'.link.label')}">Nav link</a>
                         </li>
@@ -36,16 +41,21 @@
                     <ul class="nav navbar-nav navbar-right" sec:authorize="!isAuthenticated()">
                         <li>
                             <a href="/login" th:href="@{/login}">
-                                <span class="glyphicon glyphicon-user"></span>
+                                <i class="fa fa-sign-in"></i>
                                 <span th:text="#{action.login.label}" th:remove="tag">Sign In</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
-                        <li class="navbar-text"><span th:text="${currentUser.fullName}" class="text-info">Full name</span></li>
+                        <li class="navbar-text">
+                            <span class="text-info">
+                                <i class="fa fa-user"></i>
+                                <span th:text="${currentUser.fullName}" th:remove="tag">Full name</span>
+                            </span>
+                        </li>
                         <li>
                             <a href="/j_spring_security_logout" th:href="@{/j_spring_security_logout}">
-                                <span class="glyphicon glyphicon-off"></span>
+                                <i class="fa fa-sign-out"></i>
                                 <span th:text="#{action.logout.label}" th:remove="tag">Logout</span>
                             </a>
                         </li>
@@ -74,7 +84,7 @@
 </footer>
 <div th:fragment="foot" th:remove="tag">
     <script th:src="@{/webjars/jquery/2.0.3/jquery.min.js}"></script>
-    <script th:src="@{/webjars/lodash/2.2.1/lodash.min.js}"></script>
+    <script th:src="@{/webjars/lodash/2.4.1/lodash.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.0.0/js/bootstrap.min.js}"></script>
     <script th:src="@{/resources/js/main.js}"></script>
 </div>

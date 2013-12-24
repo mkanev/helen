@@ -9,20 +9,20 @@
             <div class="col-lg-6 col-lg-offset-3">
                 <form id="loginForm" method="POST" role="form" class="form-horizontal" th:action="@{/j_spring_security_check}">
                     <fieldset>
-                        <legend th:text="#{form.login.legend}">Login Form</legend>
+                        <legend th:text="#{form.legend.login}">Login Form</legend>
                         <div th:if="${loginError}" class="alert alert-danger alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Ошибка!</strong> Wrong user or password
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" th:text="#{form.login.username}">Username</label>
+                            <label class="col-lg-4 control-label" th:text="#{form.username}">Username</label>
 
                             <div class="col-lg-8">
                                 <input type="text" id="j_username" name="j_username" class="form-control" autofocus="autofocus"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" th:text="#{form.login.password}">Password</label>
+                            <label class="col-lg-4 control-label" th:text="#{form.password}">Password</label>
 
                             <div class="col-lg-8">
                                 <input type="password" id="j_password" name="j_password" class="form-control"/>
@@ -32,7 +32,7 @@
                             <a href="./index.html" class="col-lg-4 control-label" th:href="@{/index}">Назад</a>
 
                             <div class="col-lg-8">
-                                <input type="submit" value="Log in" class="btn btn-info" th:value="#{form.login.submit}"/>
+                                <input type="submit" value="Log in" class="btn btn-info" th:value="#{form.submit.login}"/>
                             </div>
                         </div>
                     </fieldset>

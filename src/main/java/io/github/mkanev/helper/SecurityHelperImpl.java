@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import io.github.mkanev.common.LoggedClass;
-import io.github.mkanev.controller.UserDAO;
+import io.github.mkanev.dao.UserDAO;
 import io.github.mkanev.model.User;
 
 

@@ -40,11 +40,14 @@ html, body {
 
 .mainWrapper {
     min-height: 100%;
+    height: auto !important;
+    height: 100%;
 }
 
 .page-content {
-    margin-bottom: 30px;
-    padding-top: 75px;
+    margin-bottom: -30px;
+    padding-top: 70px;
+    padding-bottom: 30px;
 }
 
 header, nav, footer {
@@ -52,10 +55,9 @@ header, nav, footer {
 }
 
 footer {
-    position: relative;
-    clear: both;
-    margin-top: -30px;
     height: 30px;
+    background-color: #f8f8f8;
+    padding-top: 0.5em;
 }
 
 .center {

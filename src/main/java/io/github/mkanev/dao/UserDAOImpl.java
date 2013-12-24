@@ -1,4 +1,4 @@
-package io.github.mkanev.controller;
+package io.github.mkanev.dao;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package io.github.mkanev.controller;
+package io.github.mkanev.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,6 +36,14 @@ public interface GenericEntityDAO<T extends GenericEntity, PK extends Serializab
      * @return полученный объект либо <code>null</code>, если ничего не найдено
      */
     T getEntity(PK id);
+
+    /**
+     * Проверяет существование сущности типа T по переданному идентификатору
+     *
+     * @param id ИД сущности
+     * @return - истина, если существует, ложь - в противном случае
+     */
+    boolean exists(PK id);
 
     /**
      * Общий метод для сохранения объекта в БД. Используется и для создания записи, и для ее обновления.

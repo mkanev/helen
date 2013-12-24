@@ -5,21 +5,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.List;
 
 import io.github.mkanev.model.GenericEntity;
+import io.github.mkanev.service.GenericEntityManager;
 
 /**
  * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
-public abstract class AbstractListController<TDomain extends GenericEntity> extends AbstractCrudController<TDomain> {
+public abstract class AbstractListController<TEntity extends GenericEntity> extends AbstractCrudController<TEntity> {
 
     private static final ActionType ROOT_ACTION = ActionType.LIST;
 
-    AbstractListController() {
-        super(ROOT_ACTION);
+    AbstractListController(GenericEntityManager<TEntity> manager) {
+        super(ROOT_ACTION, manager);
     }
 
-    @ModelAttribute("domainObjects")
-    public final List<TDomain> getDomainObjectsList() {
-        return entityDAO.getExistingEntityList();
+    @ModelAttribute("entityList")
+    public final List<TEntity> getEntityList() {
+        return manager.getExistingEntityList();
     }
 
     @Override

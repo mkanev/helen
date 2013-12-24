@@ -10,11 +10,16 @@ body {
 
 .mainWrapper {
   min-height: 100%;
+  height: auto !important;
+  height: 100%;
 }
 
 .page-content {
-  margin-bottom: ~"@{footer-height}px";
-  padding-top: 75px;
+  /* Negative indent footer by its height */
+  margin-bottom: ~"-@{footer-height}px";
+  /* Pad bottom by footer height */
+  padding-top: 70px;
+  padding-bottom: ~"@{footer-height}px";
 }
 
 header,
@@ -24,8 +29,7 @@ footer {
 }
 
 footer {
-  position: relative;
-  clear: both;
-  margin-top: ~"-@{footer-height}px";
   height: ~"@{footer-height}px";
+  background-color: @color-white;
+  padding-top: 0.5em;
 }

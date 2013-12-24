@@ -8,18 +8,18 @@
 <div class="mainWrapper">
     <header th:substituteby="common/layout :: [//header]"></header>
     <div class="container page-content">
-        <div class="row" sec:authorize="hasRole('MANAGER')">
-            <div class="span12">
-                <a href="/new" class="btn" th:href="@{'/' + ${currentPage} + '/new'}">Создать</a>
+        <div class="row" sec:authorize="hasRole('ADMIN')">
+            <div class="col-lg-12">
+                <a href="/new" class="btn btn-default btn-xs" th:href="@{'/' + ${currentPage} + '/new'}">Создать</a>
             </div>
         </div>
-        <div class="row" th:if="${domainObjects}">
-            <div class="span12">
-                <span th:text="${'Всего записей: ' + #lists.size(domainObjects)}">Objects count</span>
+        <div class="row" th:if="${entityList}">
+            <div class="col-lg-12">
+                <span th:text="${'Всего записей: ' + #lists.size(entityList)}">Objects count</span>
             </div>
         </div>
-        <div class="row" th:each="domainObject : ${domainObjects}">
-            <span class="span12" th:include="${'/templates/' + currentPage} :: listElement" th:with="domainObject=${domainObject}"></span>
+        <div class="row" th:each="entity : ${entityList}">
+            <span class="col-lg-12" th:substituteby="${'/templates/' + currentPage} :: listElement" th:with="entity=${entity}"></span>
         </div>
     </div>
 </div>

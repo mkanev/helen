@@ -9,7 +9,6 @@ import io.github.mkanev.helper.PathHelper;
 import io.github.mkanev.helper.SecurityHelper;
 import io.github.mkanev.model.User;
 
-
 /**
  * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */

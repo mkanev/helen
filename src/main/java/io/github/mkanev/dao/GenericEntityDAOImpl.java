@@ -1,4 +1,4 @@
-package io.github.mkanev.controller;
+package io.github.mkanev.dao;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -56,6 +56,14 @@ public abstract class GenericEntityDAOImpl<T extends GenericEntity, PK extends S
     /**
      * {@inheritDoc}
      */
+    public boolean exists(PK id) {
+        T entity = em.find(this.persistentClass, id);
+        return entity != null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public List<T> getExistingEntityList() {
@@ -88,10 +96,7 @@ public abstract class GenericEntityDAOImpl<T extends GenericEntity, PK extends S
             logWarning("Невозможно сохранить null");
             return null;
         }
-        entity = em.merge(entity);
-        em.flush();
-        em.clear();
-        return entity;
+        return em.merge(entity);
     }
 
     /**
