@@ -34,11 +34,21 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" sec:authorize="!isAuthenticated()">
-                        <li><a href="/login" th:href="@{/login}" th:text="#{action.login.label}">Sign In</a></li>
+                        <li>
+                            <a href="/login" th:href="@{/login}">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span th:text="#{action.login.label}" th:remove="tag">Sign In</span>
+                            </a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
                         <li class="navbar-text"><span th:text="${currentUser.fullName}" class="text-info">Full name</span></li>
-                        <li><a href="/j_spring_security_logout" th:href="@{/j_spring_security_logout}" th:text="#{action.logout.label}">Logout</a></li>
+                        <li>
+                            <a href="/j_spring_security_logout" th:href="@{/j_spring_security_logout}">
+                                <span class="glyphicon glyphicon-off"></span>
+                                <span th:text="#{action.logout.label}" th:remove="tag">Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
