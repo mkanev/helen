@@ -11,11 +11,11 @@ public abstract class MetaModelEntity extends GenericEntity {
     public static final String FIELD_NAME = "name";
     public static final String FIELD_CAPTION = "caption";
     public static final String FIELD_DESCRIPTION = "description";
-    //Наименование элемента метамодели
+    //РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° РјРµС‚Р°РјРѕРґРµР»Рё
     private String name;
-    //Локализованное наименование элемента метамодели
+    //Р›РѕРєР°Р»РёР·РѕРІР°РЅРЅРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° РјРµС‚Р°РјРѕРґРµР»Рё
     private String caption;
-    //Описание элемента метамодели
+    //РћРїРёСЃР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° РјРµС‚Р°РјРѕРґРµР»Рё
     private String description;
 
     public String getName() {
