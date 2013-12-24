@@ -85,7 +85,7 @@
     </properties>
     <build>
         <defaultGoal>package</defaultGoal>
-        <finalName>HelenWebApp-${project.version}</finalName>
+        <finalName>HelenWebApp-${project.version}-${buildNumber}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -143,7 +143,6 @@
                     <revisionOnScmFailure>snapshot</revisionOnScmFailure>
                     <shortRevisionLength>8</shortRevisionLength>
                     <timestampFormat>{0,date,dd-MM-yyyy HH:mm:ss}</timestampFormat>
-                    <buildNumberPropertyName>buildNumber</buildNumberPropertyName>
                     <providerImplementations>
                         <svn>git</svn>
                     </providerImplementations>
