@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 import io.github.mkanev.model.User;
 
 /**
- * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @Repository
 public class UserDAOImpl extends GenericEntityDAOImpl<User, Long> implements UserDAO {

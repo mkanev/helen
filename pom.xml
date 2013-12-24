@@ -60,7 +60,7 @@
         <thymeleaf.springsecurity.version>2.0.0</thymeleaf.springsecurity.version>
         <webjars.bootstrap.version>3.0.0</webjars.bootstrap.version>
         <webjars.bootstrap.datetimepicker.version>6aa746736d</webjars.bootstrap.datetimepicker.version>
-        <webjars.jquery.version>2.0.3</webjars.jquery.version>
+        <webjars.jquery.version>2.0.3-1</webjars.jquery.version>
         <webjars.font-awesome.version>3.2.1</webjars.font-awesome.version>
         <webjars.lodash.version>2.2.1</webjars.lodash.version>
         <webjars.spinjs.version>1.3.0</webjars.spinjs.version>
@@ -443,11 +443,6 @@
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
             <version>${webjars.bootstrap.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap-datetimepicker</artifactId>
-            <version>${webjars.bootstrap.datetimepicker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>

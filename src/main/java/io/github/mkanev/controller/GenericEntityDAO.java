@@ -11,7 +11,7 @@ import io.github.mkanev.model.GenericEntity;
  * @param <T>  класс сущности
  * @param <PK> класс идентификатора сущности
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a>
- * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 public interface GenericEntityDAO<T extends GenericEntity, PK extends Serializable> {
 

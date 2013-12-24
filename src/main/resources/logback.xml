@@ -13,7 +13,7 @@
     </appender>
     <logger name="net.sf.ehcache" level="error"/>
     <logger name="org.apache" level="warn"/>
-    <logger name="org.hibernate" level="warn"/>
+    <logger name="org.eclipse.persistence" level="warn"/>
     <logger name="org.springframework" level="warn"/>
     <logger name="org.springframework.web.servlet.view" level="debug"/>
     <logger name="io.github.mkanev" level="debug"/>

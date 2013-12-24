@@ -3,7 +3,7 @@ package io.github.mkanev.model;
 import javax.persistence.MappedSuperclass;
 
 /**
- * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @MappedSuperclass
 public abstract class MetaModelEntity extends GenericEntity {

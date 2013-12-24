@@ -9,7 +9,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="publisher" href="#" th:attr="href=#{tenant.url}"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.0.0/css/bootstrap.min.css}" href="#"/>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.0.0/css/bootstrap-responsive.min.css}" href="#"/>
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/3.2.1/css/font-awesome.min.css}" href="#"/>
     <link rel="stylesheet" th:href="@{/resources/css/main.css}" href="#"/>
 </head>
@@ -38,7 +37,7 @@
                         <li><a href="/login" th:href="@{/login}" th:text="#{action.login.label}">Sign In</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
-                        <li class="navbar-text"><span th:text="${currentUser.fullName}" th:remove="tag">Full name</span></li>
+                        <li class="navbar-text"><span th:text="${currentUser.fullName}" class="text-info">Full name</span></li>
                         <li><a href="/j_spring_security_logout" th:href="@{/j_spring_security_logout}" th:text="#{action.logout.label}">Logout</a></li>
                     </ul>
                 </div>
@@ -57,7 +56,8 @@
                 <!--<a href="#" th:href="@{/simulateError}">Ошибка</a>-->
             </div>
             <div class="col-lg-6" style="text-align: right;">
-                <span th:text="${#messages.msg('tenant.name') + ', ' + #calendars.format(#calendars.createToday(), 'yyyy')}">Copy</span>
+                <a href="#" target="_blank" th:href="#{tenant.url}" th:text="${#messages.msg('tenant.name')}">Tenant name</a>
+                <span th:text="${', ' + #calendars.format(#calendars.createToday(), 'yyyy')}">Copy</span>
             </div>
         </div>
     </div>
@@ -66,9 +66,6 @@
     <script th:src="@{/webjars/jquery/2.0.3/jquery.min.js}"></script>
     <script th:src="@{/webjars/lodash/2.2.1/lodash.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.0.0/js/bootstrap.min.js}"></script>
-    <!--<script th:src="@{/webjars/bootstrap-datetimepicker/6aa746736d/js/bootstrap-datetimepicker.min.js}"></script>-->
-    <script th:src="@{/resources/js/thymol.js}"></script>
-    <script th:src="@{/resources/js/setThPath.js}"></script>
     <script th:src="@{/resources/js/main.js}"></script>
 </div>
 </body>

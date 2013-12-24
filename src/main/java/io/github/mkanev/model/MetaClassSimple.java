@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
+ * @author <a href="mailto:maksim.kanev@gmail.com">Maksim Kanev</a>
  */
 @Entity
 @Table(name = "hel_meta_class_simple")

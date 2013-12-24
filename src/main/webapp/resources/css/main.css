@@ -63,8 +63,7 @@ footer {
     margin: auto;
 }
 
-header a.profile-link {
-    color: #e67e22 !important;
+header span.text-info {
     font-weight: bolder;
 }
 
