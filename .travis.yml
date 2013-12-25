@@ -2,10 +2,11 @@ language: java
 before_install: mysql -e 'create database helen_test;'
 install: mvn install -P travis
 script: mvn test -P travis
+before_deploy: echo rvm_autoupdate_flag=2 >> ~/.rvmrc
 deploy:
   provider: heroku
   api_key:
-    secure: L6XeJgffFWaB/kgijnN7rw9Gcifl5AMm46g2IcMCKlyycmplThmFAUNbO3l0DRiyU52TBkZtAfG96u1dbEpIfhAhry6W0XRWulqwIrP7ESvTtpHTXLP5l0S9KaRLbgzATrBkDJA09cJQzlio7862HG33PGre9rMLvSGUWnB81+Q=
+    secure: KbfVnpACpUBqi6pxAdG6cK3+PDqjxGXYSF0aMbXLbd8hk72NtjHg5k5OlhD2cB+meRa48VHvmxQvMH4wCjDWHQMvfHsFd29h25I7QhyHvtmt93hfLeTc3vHqpTmSZAYhRe6HQH4tGMyudWr6xJrI3FfD5RqPmaR1LUwCJUuxy30=
   app: io-github-mkanev-helen
   on:
     repo: mkanev/helen
