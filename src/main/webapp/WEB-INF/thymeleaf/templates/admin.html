@@ -63,16 +63,20 @@
                 </div>
             </div>
         </div>
-        <div th:fragment="listElement" th:remove="tag">
-            <span class="col-lg-3" th:text="${entity.name}">Название</span>
-            <span class="col-lg-3" th:text="${entity.caption}">Локализованное название</span>
-            <span class="col-lg-3" th:text="${entity.javaType}">Тип</span>
-            <span class="col-lg-3" style="text-align: right;">
-                <a href="#" th:href="@{${#httpServletRequest.servletPath + '/' + entity.id}}">
-                    Просмотр
-                </a>
-            </span>
-        </div>
+        <table>
+            <tbody>
+            <tr th:fragment="listElement" th:remove="tag">
+                <td class="col-lg-3" th:text="${entity.name}">Название</td>
+                <td class="col-lg-3" th:text="${entity.caption}">Локализованное название</td>
+                <td class="col-lg-3" th:text="${entity.javaType}">Тип</td>
+                <td class="col-lg-3 text-right">
+                    <a href="#" th:href="@{${#httpServletRequest.servletPath + '/' + entity.id}}">
+                        <i class="fa fa-eye"></i> Просмотр
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <footer th:substituteby="common/layout :: [//footer]"></footer>

@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head th:substituteby="common/layout :: [//head]">
 </head>
 <body>
 <div class="mainWrapper">
     <header th:substituteby="common/layout :: [//header]"></header>
     <div class="container page-content">
-        <div class="row" sec:authorize="hasRole('ADMIN')">
-            <div class="col-lg-12">
-                <a href="/new" class="btn btn-default btn-xs" th:href="@{'/' + ${currentPage} + '/new'}">Создать</a>
+        <div class="row">
+            <div class="col-lg-6">
+                <span th:text="${'Всего записей: ' + #lists.size(entityList)}" th:if="${entityList}">Objects count</span>
+            </div>
+            <div class="col-lg-6 text-right">
+                <a href="/new" class="btn btn-default btn-xs" th:href="@{'/' + ${currentPage} + '/new'}" sec:authorize="hasRole('ADMIN')"
+                   th:text="#{action.create.label}">Create</a>
             </div>
         </div>
-        <div class="row" th:if="${entityList}">
-            <div class="col-lg-12">
-                <span th:text="${'Всего записей: ' + #lists.size(entityList)}">Objects count</span>
-            </div>
-        </div>
-        <div class="row" th:each="entity : ${entityList}">
-            <span class="col-lg-12" th:substituteby="${'/templates/' + currentPage} :: listElement" th:with="entity=${entity}"></span>
+        <br/>
+
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <tbody>
+                <tr th:each="entity : ${entityList}">
+                    <td th:substituteby="${'/templates/' + currentPage} :: listElement" th:with="entity=${entity}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
