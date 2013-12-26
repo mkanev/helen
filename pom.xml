@@ -45,7 +45,7 @@
         <mysql.driver.version>5.1.22</mysql.driver.version>
         <maven.plugin.compiler.version>3.0</maven.plugin.compiler.version>
         <maven.plugin.resources.version>2.4</maven.plugin.resources.version>
-        <maven.plugin.dependency.version>2.4</maven.plugin.dependency.version>
+        <maven.plugin.dependency.version>2.8</maven.plugin.dependency.version>
         <maven.plugin.war.version>2.3</maven.plugin.war.version>
         <maven.plugin.buildnumber.version>1.2</maven.plugin.buildnumber.version>
         <maven.plugin.release.version>2.4.1</maven.plugin.release.version>
@@ -105,6 +105,35 @@
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.plugin.dependency.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.eclipse.jetty</groupId>
+                                    <artifactId>jetty-runner</artifactId>
+                                    <version>9.1.0.v20131115</version>
+                                    <destFileName>jetty-runner.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.springframework</groupId>
+                                    <artifactId>spring-agent</artifactId>
+                                    <version>${spring-agent.version}</version>
+                                    <destFileName>spring-agent.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -228,8 +257,19 @@
                             <webApp>
                                 <contextPath>/</contextPath>
                             </webApp>
-                            <jvmArgs>
+                            <!--<jvmArgs>
                                 -javaagent:${settings.localRepository}/org/springframework/spring-agent/${spring-agent.version}/spring-agent-${spring-agent.version}.jar
+                            </jvmArgs>-->
+                            <jvmArgs>
+                                -server
+                                -Xmx2500m
+                                -Xms2500m
+                                -Xmn256m
+                                -XX:PermSize=256m
+                                -XX:MaxPermSize=768m
+                                -XX:NewRatio=8
+                                -XX:+AggressiveHeap
+                                -javaagent:target/dependency/spring-agent.jar
                             </jvmArgs>
                             <stopPort>9966</stopPort>
                             <stopKey>maksim1</stopKey>
