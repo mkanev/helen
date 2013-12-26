@@ -212,8 +212,6 @@
                     <changeLogFile>src/main/resources/db/db.changelog-master.xml</changeLogFile>
                     <driver>${jdbc.driverClassName}</driver>
                     <url>${jdbc.url}</url>
-                    <username>mkanev</username>
-                    <password>maksim1</password>
                 </configuration>
                 <executions>
                     <execution>
@@ -274,6 +272,14 @@
                             </jvmArgs>
                             <stopPort>9966</stopPort>
                             <stopKey>maksim1</stopKey>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <configuration>
+                            <username>mkanev</username>
+                            <password>maksim1</password>
                         </configuration>
                     </plugin>
                 </plugins>
