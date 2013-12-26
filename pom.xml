@@ -80,8 +80,6 @@
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.url>jdbc:mysql://${jdbc.host}:${jdbc.port}/${jdbc.dbname}?autoReconnect=true</jdbc.url>
         <jdbc.dbname>helen-dev</jdbc.dbname>
-        <jdbc.username>mkanev</jdbc.username>
-        <jdbc.password>maksim1</jdbc.password>
         <jdbc.host>localhost</jdbc.host>
         <jdbc.port>3306</jdbc.port>
         <jdbc.show-sql>true</jdbc.show-sql>
@@ -205,24 +203,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <property environment="env"/>
-                                <echoproperties/>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.0.8</version>
@@ -263,6 +243,10 @@
     <profiles>
         <profile>
             <id>development</id>
+            <properties>
+                <jdbc.username>mkanev</jdbc.username>
+                <jdbc.password>maksim1</jdbc.password>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -274,9 +258,6 @@
                             <webApp>
                                 <contextPath>/</contextPath>
                             </webApp>
-                            <!--<jvmArgs>
-                                -javaagent:${settings.localRepository}/org/springframework/spring-agent/${spring-agent.version}/spring-agent-${spring-agent.version}.jar
-                            </jvmArgs>-->
                             <jvmArgs>
                                 -server
                                 -Xmx2500m
@@ -296,8 +277,8 @@
                         <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <configuration>
-                            <username>mkanev</username>
-                            <password>maksim1</password>
+                            <username>${jdbc.username}</username>
+                            <password>${jdbc.password}</password>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -312,6 +293,7 @@
             </activation>
             <properties>
                 <jdbc.dbname>helen_test</jdbc.dbname>
+                <jdbc.username>travis</jdbc.username>
                 <jdbc.host>127.0.0.1</jdbc.host>
                 <jdbc.port>3306</jdbc.port>
             </properties>
@@ -321,7 +303,7 @@
                         <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <configuration>
-                            <username>travis</username>
+                            <username>${jdbc.username}</username>
                             <emptyPassword>true</emptyPassword>
                         </configuration>
                     </plugin>
@@ -332,13 +314,15 @@
             <id>heroku</id>
             <activation>
                 <property>
-                    <name>env.HEROKU</name>
+                    <name>heroku</name>
                 </property>
             </activation>
             <properties>
-                <jdbc.url>jdbc:${env.DATABASE_URL}</jdbc.url>
                 <jdbc.target-db>PostgreSQL</jdbc.target-db>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+                <jdbc.url>jdbc:${env.DATABASE_URL}</jdbc.url>
+                <jdbc.username>cfvtapzhtpkfsq</jdbc.username>
+                <jdbc.password>U2OXlxm4CRF6Rq80BFJdtGVqf3</jdbc.password>
             </properties>
             <build>
                 <plugins>
@@ -346,8 +330,8 @@
                         <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <configuration>
-                            <username>cfvtapzhtpkfsq</username>
-                            <password>U2OXlxm4CRF6Rq80BFJdtGVqf3</password>
+                            <username>${jdbc.username}</username>
+                            <password>${jdbc.password}</password>
                         </configuration>
                     </plugin>
                 </plugins>
