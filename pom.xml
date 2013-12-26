@@ -210,6 +210,7 @@
                 <configuration>
                     <changeLogFile>src/main/resources/db/db.changelog-master.xml</changeLogFile>
                     <driver>${jdbc.driverClassName}</driver>
+<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <url>${jdbc.url}</url>
                 </configuration>
                 <executions>
