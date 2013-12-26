@@ -314,7 +314,7 @@
             <id>heroku</id>
             <activation>
                 <property>
-                    <name>env.DYNO</name>
+                    <name>env.HEROKU</name>
                 </property>
             </activation>
             <properties>
