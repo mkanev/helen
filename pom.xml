@@ -298,7 +298,7 @@
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <configuration>
                             <username>travis</username>
-                            <emptyPassword/>
+                            <emptyPassword>true</emptyPassword>
                         </configuration>
                     </plugin>
                 </plugins>
