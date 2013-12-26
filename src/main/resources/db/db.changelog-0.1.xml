@@ -9,12 +9,12 @@
             <column name="seq_name" type="varchar(128)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="seq_count" type="bigint(20)" defaultValueNumeric="0">
+            <column name="seq_count" type="bigint" defaultValueNumeric="0">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <createTable tableName="hel_users">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="deleted" type="boolean" defaultValue="false">
@@ -52,12 +52,11 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="hel_users" columnName="id" columnDataType="bigint(20)"/>
         <createIndex tableName="hel_users" indexName="idx_username">
             <column name="username" type="varchar(255)"/>
         </createIndex>
         <createTable tableName="hel_roles">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="deleted" type="boolean" defaultValue="false">
@@ -76,20 +75,18 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="hel_roles" columnName="id" columnDataType="bigint(20)"/>
         <createTable tableName="hel_users_roles">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
-            <column name="user_id" type="bigint(20)"/>
-            <column name="role_id" type="bigint(20)"/>
+            <column name="user_id" type="bigint"/>
+            <column name="role_id" type="bigint"/>
         </createTable>
-        <addAutoIncrement tableName="hel_users_roles" columnName="id" columnDataType="bigint(20)"/>
         <createIndex tableName="hel_users_roles" indexName="idx_user_id">
-            <column name="user_id" type="bigint(20)"/>
+            <column name="user_id" type="bigint"/>
         </createIndex>
         <createIndex tableName="hel_users_roles" indexName="idx_role_id">
-            <column name="role_id" type="bigint(20)"/>
+            <column name="role_id" type="bigint"/>
         </createIndex>
         <addForeignKeyConstraint baseTableName="hel_users_roles" baseColumnNames="user_id"
                                  constraintName="fk_user_to_role"
@@ -155,7 +152,7 @@
     </changeSet>
     <changeSet id="2" author="mkanev" runOnChange="true">
         <createTable tableName="hel_meta_class">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="deleted" type="boolean" defaultValue="false">
@@ -188,16 +185,16 @@
             <column name="class_category" type="varchar(64)">
                 <constraints nullable="false"/>
             </column>
-            <column name="parent_id" type="bigint(20)">
+            <column name="parent_id" type="bigint">
                 <constraints nullable="true"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="hel_meta_class" columnName="id" columnDataType="bigint(20)"/>
+        <addAutoIncrement tableName="hel_meta_class" columnName="id" columnDataType="bigint"/>
         <addForeignKeyConstraint baseTableName="hel_meta_class" baseColumnNames="parent_id"
                                  constraintName="fk_class_to_parent"
                                  referencedTableName="hel_meta_class" referencedColumnNames="id"/>
         <createTable tableName="hel_meta_class_entity">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="table_name" type="varchar(128)">
@@ -208,12 +205,12 @@
             </column>
         </createTable>
         <createTable tableName="hel_meta_class_simple">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
         </createTable>
         <createTable tableName="hel_meta_field">
-            <column name="id" type="bigint(20)">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="deleted" type="boolean" defaultValue="false">
@@ -240,14 +237,13 @@
             <column name="column_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="data_type" type="bigint(20)">
+            <column name="data_type" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="owner_class_id" type="bigint(20)">
+            <column name="owner_class_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="hel_meta_field" columnName="id" columnDataType="bigint(20)"/>
         <addForeignKeyConstraint baseTableName="hel_meta_field" baseColumnNames="owner_class_id"
                                  constraintName="fk_field_to_owner_class"
                                  referencedTableName="hel_meta_class" referencedColumnNames="id"/>
