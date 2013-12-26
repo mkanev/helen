@@ -1,7 +1,7 @@
 language: java
 before_install: mysql -e 'create database helen_test;'
-install: mvn install -P travis
-script: mvn test -P travis
+install: mvn install
+script: mvn test
 before_deploy: echo rvm_autoupdate_flag=2 >> ~/.rvmrc
 deploy:
   provider: heroku

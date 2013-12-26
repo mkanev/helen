@@ -43,6 +43,7 @@
         <project.source.version>1.7</project.source.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mysql.driver.version>5.1.22</mysql.driver.version>
+        <postresql.driver.version>9.3-1100-jdbc41</postresql.driver.version>
         <maven.plugin.compiler.version>3.0</maven.plugin.compiler.version>
         <maven.plugin.resources.version>2.4</maven.plugin.resources.version>
         <maven.plugin.dependency.version>2.8</maven.plugin.dependency.version>
@@ -79,6 +80,8 @@
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
         <jdbc.url>jdbc:mysql://${jdbc.host}:${jdbc.port}/${jdbc.dbname}?autoReconnect=true</jdbc.url>
         <jdbc.dbname>helen-dev</jdbc.dbname>
+        <jdbc.username>mkanev</jdbc.username>
+        <jdbc.password>maksim1</jdbc.password>
         <jdbc.host>localhost</jdbc.host>
         <jdbc.port>3306</jdbc.port>
         <jdbc.show-sql>true</jdbc.show-sql>
@@ -209,6 +212,8 @@
                     <changeLogFile>src/main/resources/db/db.changelog-master.xml</changeLogFile>
                     <driver>${jdbc.driverClassName}</driver>
                     <url>${jdbc.url}</url>
+                    <username>mkanev</username>
+                    <password>maksim1</password>
                 </configuration>
                 <executions>
                     <execution>
@@ -242,10 +247,6 @@
     <profiles>
         <profile>
             <id>development</id>
-            <properties>
-                <jdbc.username>mkanev</jdbc.username>
-                <jdbc.password>maksim1</jdbc.password>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -275,24 +276,20 @@
                             <stopKey>maksim1</stopKey>
                         </configuration>
                     </plugin>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                        <configuration>
-                            <username>mkanev</username>
-                            <password>maksim1</password>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
         <profile>
             <id>travis</id>
+            <activation>
+                <property>
+                    <name>env.TRAVIS</name>
+                </property>
+            </activation>
             <properties>
                 <jdbc.dbname>helen_test</jdbc.dbname>
                 <jdbc.host>127.0.0.1</jdbc.host>
                 <jdbc.port>3306</jdbc.port>
-                <jdbc.username>travis</jdbc.username>
             </properties>
             <build>
                 <plugins>
@@ -301,6 +298,32 @@
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <configuration>
                             <username>travis</username>
+                            <emptyPassword/>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>heroku</id>
+            <activation>
+                <property>
+                    <name>env.DYNO</name>
+                </property>
+            </activation>
+            <properties>
+                <jdbc.url>jdbc:${env.DATABASE_URL}</jdbc.url>
+                <jdbc.target-db>PostgreSQL</jdbc.target-db>
+                <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <configuration>
+                            <username>cfvtapzhtpkfsq</username>
+                            <password>U2OXlxm4CRF6Rq80BFJdtGVqf3</password>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -313,6 +336,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postresql.driver.version}</version>
         </dependency>
         <!-- ORM -->
         <dependency>
