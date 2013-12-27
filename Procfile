@@ -1,1 +1,1 @@
-web: java -javaagent:target/dependency/spring-agent.jar -jar target/dependency/jetty-runner.jar --port $PORT target/*.war
+web: java $JAVA_OPTS -javaagent:target/dependency/spring-agent.jar -jar target/dependency/jetty-runner.jar --port $PORT target/*.war

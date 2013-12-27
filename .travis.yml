@@ -8,6 +8,6 @@ deploy:
   buildpack: https://github.com/mkanev/heroku-buildpack-java.git
   api_key:
     secure: KbfVnpACpUBqi6pxAdG6cK3+PDqjxGXYSF0aMbXLbd8hk72NtjHg5k5OlhD2cB+meRa48VHvmxQvMH4wCjDWHQMvfHsFd29h25I7QhyHvtmt93hfLeTc3vHqpTmSZAYhRe6HQH4tGMyudWr6xJrI3FfD5RqPmaR1LUwCJUuxy30=
-  app: io-github-mkanev-helen
+  app: peaceful-sands-8992
   on:
     repo: mkanev/helen
