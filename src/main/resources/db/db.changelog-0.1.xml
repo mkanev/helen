@@ -142,13 +142,19 @@
             <where>seq_name='system_seq'</where>
         </update>
         <insert tableName="hel_users_roles">
+            <column name="id" valueComputed="(select seq_count+1 from hel_sequence where seq_name='system_seq')"/>
             <column name="user_id" valueComputed="(select id from hel_users where username='admin')"/>
             <column name="role_id" valueComputed="(select id from hel_roles where name='ADMIN')"/>
         </insert>
         <insert tableName="hel_users_roles">
+            <column name="id" valueComputed="(select seq_count+2 from hel_sequence where seq_name='system_seq')"/>
             <column name="user_id" valueComputed="(select id from hel_users where username='mkanev')"/>
             <column name="role_id" valueComputed="(select id from hel_roles where name='USER')"/>
         </insert>
+        <update tableName="hel_sequence">
+            <column name="seq_count" valueComputed="(select max(id)+1 from hel_users_roles)"/>
+            <where>seq_name='system_seq'</where>
+        </update>
     </changeSet>
     <changeSet id="2" author="mkanev" runOnChange="true">
         <createTable tableName="hel_meta_class">
@@ -189,7 +195,6 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="hel_meta_class" columnName="id" columnDataType="bigint"/>
         <addForeignKeyConstraint baseTableName="hel_meta_class" baseColumnNames="parent_id"
                                  constraintName="fk_class_to_parent"
                                  referencedTableName="hel_meta_class" referencedColumnNames="id"/>
