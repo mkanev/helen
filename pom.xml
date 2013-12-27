@@ -346,13 +346,13 @@
             <id>heroku-forward</id>
             <activation>
                 <property>
-                    <name>env.HEROKU_POSTGRESQL_BLACK_URL</name>
+                    <name>postgreUrl</name>
                 </property>
             </activation>
             <properties>
                 <jdbc.target-db>PostgreSQL</jdbc.target-db>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:${env.HEROKU_POSTGRESQL_BLACK_URL}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>
+                <jdbc.url>jdbc:${postgreUrl}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>
                 <jdbc.username>cfvtapzhtpkfsq</jdbc.username>
                 <jdbc.password>U2OXlxm4CRF6Rq80BFJdtGVqf3</jdbc.password>
             </properties>
