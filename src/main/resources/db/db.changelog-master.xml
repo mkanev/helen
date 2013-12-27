@@ -6,6 +6,8 @@
                             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
     <property name="clob.type" value="clob" dbms="oracle"/>
     <property name="clob.type" value="longtext" dbms="mysql"/>
+    <property name="uuid.function" value="uuid()" dbms="mysql"/>
+    <property name="uuid.function" value="uuid_generate_v4()" dbms="postgresql"/>
 
     <include file="db.changelog-0.1.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

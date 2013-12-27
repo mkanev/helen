@@ -26,8 +26,8 @@
             <column name="update_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
-            <column name="uuid" type="varchar(64)">
-                <constraints nullable="false"/>
+            <column name="uuid" type="uuid">
+            <constraints nullable="false"/>
             </column>
             <column name="last_name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -68,8 +68,8 @@
             <column name="update_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
-            <column name="uuid" type="varchar(64)">
-                <constraints nullable="false"/>
+            <column name="uuid" type="uuid">
+            <constraints nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -101,21 +101,21 @@
             <column name="id" valueComputed="(select seq_count+1 from hel_sequence where seq_name='system_seq')"/>
             <column name="insert_date" valueComputed="now()"/>
             <column name="update_date" valueComputed="now()"/>
-            <column name="uuid" valueComputed="UUID()"/>
+            <column name="uuid" valueComputed="${uuid.function}"/>
             <column name="name" value="ADMIN"/>
         </insert>
         <insert tableName="hel_roles">
             <column name="id" valueComputed="(select seq_count+2 from hel_sequence where seq_name='system_seq')"/>
             <column name="insert_date" valueComputed="now()"/>
             <column name="update_date" valueComputed="now()"/>
-            <column name="uuid" valueComputed="UUID()"/>
+            <column name="uuid" valueComputed="${uuid.function}"/>
             <column name="name" value="USER"/>
         </insert>
         <insert tableName="hel_users">
             <column name="id" valueComputed="(select seq_count+3 from hel_sequence where seq_name='system_seq')"/>
             <column name="insert_date" valueComputed="now()"/>
             <column name="update_date" valueComputed="now()"/>
-            <column name="uuid" valueComputed="UUID()"/>
+            <column name="uuid" valueComputed="${uuid.function}"/>
             <column name="last_name" value="Admin"/>
             <column name="first_name" value="Admin"/>
             <column name="patronymic" value="Admin"/>
@@ -128,7 +128,7 @@
             <column name="id" valueComputed="(select seq_count+4 from hel_sequence where seq_name='system_seq')"/>
             <column name="insert_date" valueComputed="now()"/>
             <column name="update_date" valueComputed="now()"/>
-            <column name="uuid" valueComputed="UUID()"/>
+            <column name="uuid" valueComputed="${uuid.function}"/>
             <column name="last_name" value="Канев"/>
             <column name="first_name" value="Максим"/>
             <column name="patronymic" value="Андреевич"/>
@@ -170,8 +170,8 @@
             <column name="update_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
-            <column name="uuid" type="varchar(64)">
-                <constraints nullable="false"/>
+            <column name="uuid" type="uuid">
+            <constraints nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -227,8 +227,8 @@
             <column name="update_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
-            <column name="uuid" type="varchar(64)">
-                <constraints nullable="false"/>
+            <column name="uuid" type="uuid">
+            <constraints nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
