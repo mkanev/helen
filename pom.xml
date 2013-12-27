@@ -322,11 +322,10 @@
             <properties>
                 <jdbc.target-db>PostgreSQL</jdbc.target-db>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <!--<jdbc.url>jdbc:postgresql://${jdbc.url.pattern}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>-->
-                <jdbc.url>jdbc:${env.HEROKU_POSTGRESQL_BLUE_URL}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>
-                <!--<jdbc.dbname>d4o6lgvq7asj06</jdbc.dbname>-->
-                <!--<jdbc.host>ec2-54-228-187-149.eu-west-1.compute.amazonaws.com</jdbc.host>-->
-                <!--<jdbc.port>5432</jdbc.port>-->
+                <jdbc.url>jdbc:postgresql://${jdbc.url.pattern}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>
+                <jdbc.dbname>d4o6lgvq7asj06</jdbc.dbname>
+                <jdbc.host>ec2-54-228-187-149.eu-west-1.compute.amazonaws.com</jdbc.host>
+                <jdbc.port>5432</jdbc.port>
                 <jdbc.username>cfvtapzhtpkfsq</jdbc.username>
                 <jdbc.password>U2OXlxm4CRF6Rq80BFJdtGVqf3</jdbc.password>
             </properties>
