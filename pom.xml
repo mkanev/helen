@@ -342,33 +342,6 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>heroku-forward</id>
-            <activation>
-                <property>
-                    <name>postgreUrl</name>
-                </property>
-            </activation>
-            <properties>
-                <jdbc.target-db>PostgreSQL</jdbc.target-db>
-                <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:${postgreUrl}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>
-                <jdbc.username>cfvtapzhtpkfsq</jdbc.username>
-                <jdbc.password>U2OXlxm4CRF6Rq80BFJdtGVqf3</jdbc.password>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                        <configuration>
-                            <username>${jdbc.username}</username>
-                            <password>${jdbc.password}</password>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
     </profiles>
     <dependencies>
         <!-- DB -->
