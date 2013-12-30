@@ -39,7 +39,11 @@
             <url>https://repository.jboss.org/nexus/content/repositories/central/</url>
         </repository>
         <repository>
-            <id>io.spring.repo.maven.release</id>
+            <id>Alfresco repo</id>
+            <url>https://maven.alfresco.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+        <id>io.spring.repo.maven.release</id>
             <url>http://repo.spring.io/release/</url>
             <snapshots>
                 <enabled>false</enabled>
@@ -317,6 +321,13 @@
                         <configuration>
                             <username>${jdbc.username}</username>
                             <emptyPassword>true</emptyPassword>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>buildnumber-maven-plugin</artifactId>
+                        <configuration>
+                            <doCheck>true</doCheck>
                         </configuration>
                     </plugin>
                 </plugins>

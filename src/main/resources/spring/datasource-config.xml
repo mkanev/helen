@@ -14,10 +14,10 @@
         <property name="jdbcUrl" value="jdbc:${jdbc.url.pattern}?autoReconnect=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory&amp;ssl=true"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
-        <property name="maxConnectionsPerPartition" value="30"/>
-        <property name="minConnectionsPerPartition" value="10"/>
+        <property name="maxConnectionsPerPartition" value="6"/>
+        <property name="minConnectionsPerPartition" value="2"/>
         <property name="partitionCount" value="3"/>
-        <property name="acquireIncrement" value="5"/>
+        <property name="acquireIncrement" value="2"/>
         <property name="statementsCacheSize" value="100"/>
         <property name="statisticsEnabled" value="true"/>
     </bean>
