@@ -11,7 +11,7 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" p:entityManagerFactory-ref="entityManagerFactory"/>
     <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
         <property name="driverClass" value="${jdbc.driverClassName}"/>
-        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="jdbcUrl" value="jdbc:${jdbc.url.pattern}?autoReconnect=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory&amp;ssl=true"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="maxConnectionsPerPartition" value="30"/>
