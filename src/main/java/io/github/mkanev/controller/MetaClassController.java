@@ -1,8 +1,6 @@
 package io.github.mkanev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.github.mkanev.model.MetaClass;
 import io.github.mkanev.service.MetaClassManager;
@@ -10,8 +8,8 @@ import io.github.mkanev.service.MetaClassManager;
 /**
  * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
  */
-@Controller
-@RequestMapping(value = "/" + MetaClassController.CURRENT_PAGE)
+//@Controller
+//@RequestMapping(value = "/" + MetaClassController.CURRENT_PAGE)
 public class MetaClassController extends AbstractListController<MetaClass> {
 
     public static final String CURRENT_PAGE = "admin";
