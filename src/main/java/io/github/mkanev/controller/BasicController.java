@@ -1,7 +1,7 @@
 package io.github.mkanev.controller;
 
 /**
- * Created with IntelliJ IDEA. User: Maksim Kanev Date: 12.08.13 Time: 20:13
+ * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
  */
 public class BasicController extends AbstractController {
 

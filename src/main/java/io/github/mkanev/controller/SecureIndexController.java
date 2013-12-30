@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/secure")
 public class SecureIndexController extends BasicController {
 
-    protected SecureIndexController() {
-        super("test_index");
+    SecureIndexController() {
+        super("index");
     }
 
 }

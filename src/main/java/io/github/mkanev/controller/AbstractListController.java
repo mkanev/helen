@@ -25,6 +25,6 @@ public abstract class AbstractListController<TEntity extends GenericEntity> exte
 
     @Override
     public final String getLandingPage() {
-        return "/common/list";
+        return "common/list";
     }
 }

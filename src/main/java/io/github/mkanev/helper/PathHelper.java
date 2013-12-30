@@ -23,12 +23,12 @@ public class PathHelper {
     }
 
     public static String buildActionPathForPage(String pageName, ActionType... actions) {
-        return pathSeparator + pageName + buildActionPath(actions);
+        return pageName + buildActionPath(actions);
     }
 
     public static String buildActionPath(ActionType... actions) {
         if (actions == null || actions.length == 0) {
-            return null;
+            return "";
         }
         StringBuilder sb = new StringBuilder();
         for (ActionType actionType : actions) {

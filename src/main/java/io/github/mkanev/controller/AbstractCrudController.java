@@ -31,13 +31,13 @@ public abstract class AbstractCrudController<TEntity extends GenericEntity> exte
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String initCreateEntityForm(Model model) {
         model.addAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME, createEntity());
-        return "/common/edit";
+        return "common/edit";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String createEntity(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TEntity entity, BindingResult result, SessionStatus status, Model model) {
         if (result.hasErrors()) {
-            return "/common/edit";
+            return "common/edit";
         } else {
             saveEntity(entity);
             status.setComplete();
@@ -48,13 +48,13 @@ public abstract class AbstractCrudController<TEntity extends GenericEntity> exte
     @RequestMapping(value = "/{entityId}/edit", method = RequestMethod.GET)
     public String initUpdateEntityForm(@PathVariable("entityId") Long entityId, Model model) {
         model.addAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME, getEntityById(entityId));
-        return "/common/edit";
+        return "common/edit";
     }
 
     @RequestMapping(value = "/{entityId}/edit", method = RequestMethod.PUT)
     public String updateEntity(@Valid @ModelAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME) TEntity entity, BindingResult result, Model model, SessionStatus status) {
         if (result.hasErrors()) {
-            return "/common/edit";
+            return "common/edit";
         } else {
             entity = saveEntity(entity);
             status.setComplete();
@@ -65,7 +65,7 @@ public abstract class AbstractCrudController<TEntity extends GenericEntity> exte
 
     @RequestMapping("/{entityId}")
     public ModelAndView showEntity(@PathVariable("entityId") Long entityId) {
-        ModelAndView mav = new ModelAndView("/common/view");
+        ModelAndView mav = new ModelAndView("common/view");
         mav.addObject(DEFAULT_MODEL_ATTRIBUTE_NAME, getEntityById(entityId));
         return mav;
     }

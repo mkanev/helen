@@ -1,7 +1,7 @@
 package io.github.mkanev.controller;
 
 /**
- * Created with IntelliJ IDEA. User: Maksim Kanev Date: 10.08.13 Time: 19:30
+ * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
  */
 public enum ActionType {
     VIEW, //

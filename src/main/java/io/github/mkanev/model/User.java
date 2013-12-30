@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
 /**
- * Created with IntelliJ IDEA. User: Maksim Kanev Date: 10.08.13 Time: 19:42
+ * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
  */
 @Entity
 @Table(name = "hel_users")

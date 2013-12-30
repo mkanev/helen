@@ -277,6 +277,8 @@
                                 -XX:NewRatio=8
                                 -XX:+AggressiveHeap
                                 -javaagent:target/dependency/spring-agent.jar
+                                -Xdebug
+                                -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=4000
                             </jvmArgs>
                             <stopPort>9966</stopPort>
                             <stopKey>maksim1</stopKey>
