@@ -1,4 +1,8 @@
 language: java
+branches:
+  only:
+    - master
+    - release
 before_install: mysql -e 'create database helen_test;'
 install: mvn install
 script: mvn test
