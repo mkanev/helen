@@ -331,7 +331,7 @@
             <properties>
                 <jdbc.target-db>PostgreSQL</jdbc.target-db>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:postgresql://${jdbc.url.pattern}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc.url>
+                <jdbc.url>jdbc:postgresql://${jdbc.url.pattern}?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory;</jdbc.url>
                 <jdbc.dbname>ded3pjehhbe2rv</jdbc.dbname>
                 <jdbc.host>ec2-54-197-240-180.compute-1.amazonaws.com</jdbc.host>
                 <jdbc.port>5432</jdbc.port>
