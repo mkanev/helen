@@ -2,8 +2,8 @@ package io.github.mkanev.service;
 
 import java.util.List;
 
-import io.github.mkanev.dao.GenericEntityDAO;
 import io.github.mkanev.model.GenericEntity;
+import io.github.mkanev.repository.GenericEntityDAO;
 
 /**
  * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>

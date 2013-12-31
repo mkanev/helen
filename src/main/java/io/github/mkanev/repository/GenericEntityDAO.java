@@ -1,4 +1,4 @@
-package io.github.mkanev.dao;
+package io.github.mkanev.repository;
 
 import java.io.Serializable;
 import java.util.List;

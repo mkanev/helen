@@ -7,8 +7,8 @@
 <div class="mainWrapper">
     <header th:substituteby="common/layout :: [//header]"></header>
     <div class="container page-content">
-        <form id="domainObjectEditForm" th:substituteby="${'/templates/' + currentPage} :: editForm">
-            <fieldset>
+        <form id="domainObjectEditForm" th:substituteby="${'templates/' + currentPage} :: editForm">
+        <fieldset>
                 <legend>Create / Edit domain object</legend>
             </fieldset>
         </form>

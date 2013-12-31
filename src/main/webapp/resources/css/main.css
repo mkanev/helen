@@ -65,6 +65,10 @@ footer {
     margin: auto;
 }
 
+.nav, .pagination, .carousel a {
+    cursor: pointer;
+}
+
 header span.text-info {
     font-weight: bolder;
 }

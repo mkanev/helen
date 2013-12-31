@@ -59,7 +59,7 @@ public abstract class AbstractCrudController<TEntity extends GenericEntity> exte
             entity = saveEntity(entity);
             status.setComplete();
             model.addAttribute(DEFAULT_MODEL_ATTRIBUTE_NAME, entity);
-            return PathHelper.buildRedirectPath("/" + getCurrentPage()) + "/{entityId}";
+            return PathHelper.buildRedirectPath(getCurrentPage()) + "/{entityId}";
         }
     }
 

@@ -101,11 +101,6 @@
         <location>/error</location>
     </error-page>
 
-    <!-- Landing pages -->
-    <welcome-file-list>
-        <welcome-file>/index</welcome-file>
-    </welcome-file-list>
-
     <!-- MIME types definitions -->
     <mime-mapping>
         <extension>ttf</extension>

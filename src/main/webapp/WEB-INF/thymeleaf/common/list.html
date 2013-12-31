@@ -23,7 +23,7 @@
             <table class="table table-condensed">
                 <tbody>
                 <tr th:each="entity : ${entityList}">
-                    <td th:substituteby="${'/templates/' + currentPage} :: listElement" th:with="entity=${entity}"></td>
+                    <td th:substituteby="${'templates/' + currentPage} :: listElement" th:with="entity=${entity}"></td>
                 </tr>
                 </tbody>
             </table>

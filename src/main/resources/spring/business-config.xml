@@ -6,10 +6,14 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context 
                            http://www.springframework.org/schema/context/spring-context.xsd" default-lazy-init="false">
-    <context:annotation-config/>
-    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
     <context:spring-configured/>
-    <context:component-scan base-package="io.github.mkanev"/>
+    <context:annotation-config/>
+
+    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+
+    <context:component-scan base-package="io.github.mkanev.repository"/>
+    <context:component-scan base-package="io.github.mkanev.service"/>
+
     <import resource="datasource-config.xml"/>
     <import resource="security-config.xml"/>
 </beans>

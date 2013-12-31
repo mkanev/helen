@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import io.github.mkanev.common.LoggedClass;
-import io.github.mkanev.dao.GenericEntityDAO;
 import io.github.mkanev.model.GenericEntity;
+import io.github.mkanev.repository.GenericEntityDAO;
 
 /**
  * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>

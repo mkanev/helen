@@ -1,4 +1,4 @@
-package io.github.mkanev.dao;
+package io.github.mkanev.repository;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
