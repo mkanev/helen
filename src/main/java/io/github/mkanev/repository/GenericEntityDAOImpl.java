@@ -3,7 +3,6 @@ package io.github.mkanev.repository;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +21,6 @@ import io.github.mkanev.model.GenericEntity;
 /**
  * {@inheritDoc}
  */
-@Transactional(readOnly = true)
 public abstract class GenericEntityDAOImpl<T extends GenericEntity, PK extends Serializable> extends LoggedClass implements GenericEntityDAO<T, PK> {
 
     @PersistenceContext
@@ -90,7 +88,6 @@ public abstract class GenericEntityDAOImpl<T extends GenericEntity, PK extends S
      * {@inheritDoc}
      */
     @Override
-    @Transactional(readOnly = false, rollbackFor = Exception.class)
     public T saveEntity(T entity) {
         if (entity == null) {
             logWarning("Невозможно сохранить null");
@@ -166,28 +163,6 @@ public abstract class GenericEntityDAOImpl<T extends GenericEntity, PK extends S
         T u = getEntity(id);
         fill(u);
         return u;
-    }
-
-    /**
-     * Возвращает сущность, соответствующую запросу с параметрами, с проверкой на единственность
-     *
-     * @param queryName  имя запроса
-     * @param parameters параметры запроса
-     * @param singleOnly флаг проверки на единственность
-     */
-    protected T getNamedQueryResult(String queryName, boolean singleOnly, Object... parameters) {
-        List<T> resultList = findByNamedQuery(queryName, parameters);
-        if (CollectionUtils.isEmpty(resultList)) {
-            logDebug("Запрос %s не вернул результатов", queryName);
-            return null;
-        }
-        if (resultList.size() > 1) {
-            logWarning("Запрос %s вернул множество результатов [количество: %d]", queryName, resultList.size());
-            if (singleOnly) {
-                return null;
-            }
-        }
-        return resultList.iterator().next();
     }
 
     /**

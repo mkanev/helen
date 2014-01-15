@@ -1,5 +1,7 @@
 package io.github.mkanev.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import io.github.mkanev.repository.GenericEntityDAO;
 /**
  * @author <a href="mailto:maksim.kanev@waveaccess.ru">Maksim Kanev</a>
  */
+@Transactional(readOnly = true)
 public abstract class GenericManagerImpl<T extends GenericEntity, PK extends Serializable> extends LoggedClass implements GenericManager<T, PK> {
 
     private static final long serialVersionUID = 4852856653776616598L;
@@ -43,6 +46,7 @@ public abstract class GenericManagerImpl<T extends GenericEntity, PK extends Ser
     /**
      * {@inheritDoc}
      */
+    @Transactional(readOnly = false, rollbackFor = Exception.class)
     public T save(T object) {
         logDebug("___GenericManagerImpl.save %s", object);
         return dao.saveEntity(object);
