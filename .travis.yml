@@ -6,12 +6,12 @@ branches:
 before_install: mysql -e 'create database helen_test;'
 install: mvn install
 script: mvn test
-before_deploy: echo rvm_autoupdate_flag=2 >> ~/.rvmrc
-deploy:
-  provider: heroku
-  buildpack: https://github.com/mkanev/heroku-buildpack-java.git
-  api_key:
-    secure: KbfVnpACpUBqi6pxAdG6cK3+PDqjxGXYSF0aMbXLbd8hk72NtjHg5k5OlhD2cB+meRa48VHvmxQvMH4wCjDWHQMvfHsFd29h25I7QhyHvtmt93hfLeTc3vHqpTmSZAYhRe6HQH4tGMyudWr6xJrI3FfD5RqPmaR1LUwCJUuxy30=
-  app: peaceful-sands-8992
-  on:
-    repo: mkanev/helen
+#before_deploy: echo rvm_autoupdate_flag=2 >> ~/.rvmrc
+#deploy:
+#  provider: heroku
+#  buildpack: https://github.com/mkanev/heroku-buildpack-java.git
+#  api_key:
+#    secure: KbfVnpACpUBqi6pxAdG6cK3+PDqjxGXYSF0aMbXLbd8hk72NtjHg5k5OlhD2cB+meRa48VHvmxQvMH4wCjDWHQMvfHsFd29h25I7QhyHvtmt93hfLeTc3vHqpTmSZAYhRe6HQH4tGMyudWr6xJrI3FfD5RqPmaR1LUwCJUuxy30=
+#  app: peaceful-sands-8992
+#  on:
+#    repo: mkanev/helen

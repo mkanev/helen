@@ -17,7 +17,6 @@
     <logger name="org.springframework" level="warn"/>
     <logger name="org.springframework.web.servlet.view" level="warn"/>
     <logger name="io.github.mkanev" level="debug"/>
-    <logger name="io.github.mkanev.helper" level="info"/>
     <root level="warn">
         <appender-ref ref="console"/>
     </root>
