@@ -276,12 +276,9 @@
                             </webApp>
                             <jvmArgs>
                                 -server
-                                -Xmx2500m
-                                -Xms2500m
-                                -Xmn256m
-                                -XX:PermSize=256m
-                                -XX:MaxPermSize=768m
-                                -XX:NewRatio=8
+                                -Xmx384m
+                                -Xms384m
+                                -Xss512k
                                 -XX:+AggressiveHeap
                                 -javaagent:target/dependency/spring-agent.jar
                                 -Xdebug
